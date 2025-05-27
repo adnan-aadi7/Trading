@@ -4,7 +4,7 @@ import Dashboard from "./dasboard/page/Dashboard";
 import Traders from "./traders/page/Traders";
 import Trade from "./trade/pages/Trades";
 import Analytics from "./analytics/page/Analytics";
-import LeaderBoard from "./leaderboard/page/LeaderBoard";
+import Leaderboard from "./leaderboard/page/Leaderboard";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route path="/traders" element={<Traders />} />
         <Route path="/trade" element={<Trade />} />
         <Route path="/analytics" element={<Analytics />} />
-        <Route path="/leaderboard" element={<LeaderBoard />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
     </BrowserRouter>
   );
