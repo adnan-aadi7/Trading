@@ -98,10 +98,10 @@ const Leaderboard = () => {
         key="prev"
         onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
         disabled={currentPage === 1}
-        className="flex items-center gap-1 px-3 py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-500 text-white rounded-lg transition-colors"
+        className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-500 text-white rounded-lg transition-colors text-sm"
       >
         <ChevronLeft size={16} />
-        Prev
+        <span className="hidden sm:inline">Prev</span>
       </button>
     );
 
@@ -111,7 +111,7 @@ const Leaderboard = () => {
         <button
           key={i}
           onClick={() => handlePageChange(i)}
-          className={`px-3 py-2 rounded-lg transition-colors ${
+          className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg transition-colors text-sm ${
             currentPage === i
               ? "bg-blue-600 text-white"
               : "bg-slate-700 hover:bg-slate-600 text-white"
@@ -128,9 +128,9 @@ const Leaderboard = () => {
         key="next"
         onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
         disabled={currentPage === totalPages}
-        className="flex items-center gap-1 px-3 py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-500 text-white rounded-lg transition-colors"
+        className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-500 text-white rounded-lg transition-colors text-sm"
       >
-        Next
+        <span className="hidden sm:inline">Next</span>
         <ChevronRight size={16} />
       </button>
     );
@@ -139,143 +139,155 @@ const Leaderboard = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full px-2 lg:px-16">
       <div className="w-full">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-white text-2xl font-semibold">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0 mb-4 sm:mb-6">
+          <h1 className="text-white text-xl sm:text-2xl font-semibold">
             Trader Performance Leaderboard
           </h1>
-          <div className="flex gap-3">
-            <button className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg transition-colors">
+          <div className="flex gap-2 sm:gap-3">
+            <button className="flex items-center gap-1.5 sm:gap-2 bg-slate-700 hover:bg-slate-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-sm">
               <Filter size={16} />
-              Filters
+              <span className="hidden sm:inline">Filters</span>
             </button>
-            <button className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg transition-colors">
+            <button className="flex items-center gap-1.5 sm:gap-2 bg-slate-700 hover:bg-slate-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-sm">
               <Download size={16} />
-              Export
+              <span className="hidden sm:inline">Export</span>
             </button>
           </div>
         </div>
 
         {/* Table */}
-        <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden overflow-x-auto">
-          {/* Table Header */}
-          <div className="grid grid-cols-9 gap-4 px-6 py-4 bg-slate-800 border-b border-slate-700 min-w-[1200px]">
-            <div className="text-slate-400 text-sm font-medium">Trader</div>
-            <div className="text-slate-400 text-sm font-medium text-center">
-              PNL
+        <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden">
+          <div className="overflow-x-auto">
+            {/* Table Header */}
+            <div className="grid grid-cols-9 gap-3 sm:gap-4 px-3 sm:px-6 py-3 sm:py-4 bg-slate-800 border-b border-slate-700 min-w-[800px]">
+              <div className="text-slate-400 text-xs sm:text-sm font-medium">
+                Trader
+              </div>
+              <div className="text-slate-400 text-xs sm:text-sm font-medium text-center">
+                PNL
+              </div>
+              <div className="text-slate-400 text-xs sm:text-sm font-medium text-center">
+                Avg PNL
+              </div>
+              <div className="text-slate-400 text-xs sm:text-sm font-medium text-center">
+                Config PNL
+              </div>
+              <div className="text-slate-400 text-xs sm:text-sm font-medium text-center">
+                Avg Drawdown
+              </div>
+              <div className="text-slate-400 text-xs sm:text-sm font-medium text-center">
+                Max Drawdown
+              </div>
+              <div className="text-slate-400 text-xs sm:text-sm font-medium text-center">
+                Total Trades
+              </div>
+              <div className="text-slate-400 text-xs sm:text-sm font-medium text-center">
+                Liquidations
+              </div>
+              <div className="text-slate-400 text-xs sm:text-sm font-medium text-center">
+                Win Rate
+              </div>
             </div>
-            <div className="text-slate-400 text-sm font-medium text-center">
-              Avg PNL
-            </div>
-            <div className="text-slate-400 text-sm font-medium text-center">
-              Config PNL
-            </div>
-            <div className="text-slate-400 text-sm font-medium text-center">
-              Avg Drawdown
-            </div>
-            <div className="text-slate-400 text-sm font-medium text-center">
-              Max Drawdown
-            </div>
-            <div className="text-slate-400 text-sm font-medium text-center">
-              Total Trades
-            </div>
-            <div className="text-slate-400 text-sm font-medium text-center">
-              Liquidations
-            </div>
-            <div className="text-slate-400 text-sm font-medium text-center">
-              Win Rate
-            </div>
+
+            {/* Table Rows */}
+            {traders.map((trader, index) => (
+              <div
+                key={trader.id}
+                className={`grid grid-cols-9 gap-3 sm:gap-4 px-3 sm:px-6 py-3 sm:py-4 hover:bg-slate-750 transition-colors min-w-[800px] ${
+                  index !== traders.length - 1
+                    ? "border-b border-slate-700"
+                    : ""
+                }`}
+              >
+                {/* Trader Info */}
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div
+                    className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full ${trader.avatarBg} flex items-center justify-center text-white text-xs sm:text-sm font-semibold flex-shrink-0`}
+                  >
+                    {trader.avatar}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-white font-medium text-sm sm:text-base truncate">
+                      {trader.name}
+                    </div>
+                    <div className="text-slate-400 text-xs sm:text-sm truncate">
+                      {trader.assets}
+                    </div>
+                  </div>
+                </div>
+
+                {/* PNL */}
+                <div className="flex items-center justify-center">
+                  <span className="text-green-400 font-semibold text-sm sm:text-base whitespace-nowrap">
+                    {trader.pnl}
+                  </span>
+                </div>
+
+                {/* Avg PNL */}
+                <div className="flex items-center justify-center">
+                  <span className="text-green-400 font-medium text-sm sm:text-base whitespace-nowrap">
+                    {trader.avgPnl}
+                  </span>
+                </div>
+
+                {/* Config PNL */}
+                <div className="flex items-center justify-center">
+                  <span className="text-green-400 font-medium text-sm sm:text-base whitespace-nowrap">
+                    {trader.configPnl}
+                  </span>
+                </div>
+
+                {/* Avg Drawdown */}
+                <div className="flex items-center justify-center">
+                  <span className="text-red-400 font-medium text-sm sm:text-base whitespace-nowrap">
+                    {trader.avgDrawdown}
+                  </span>
+                </div>
+
+                {/* Max Drawdown */}
+                <div className="flex items-center justify-center">
+                  <span className="text-red-400 font-medium text-sm sm:text-base whitespace-nowrap">
+                    {trader.maxDrawdown}
+                  </span>
+                </div>
+
+                {/* Total Trades */}
+                <div className="flex items-center justify-center">
+                  <span className="text-white font-medium text-sm sm:text-base whitespace-nowrap">
+                    {trader.totalTrades}
+                  </span>
+                </div>
+
+                {/* Liquidations */}
+                <div className="flex items-center justify-center">
+                  <span
+                    className={`font-medium text-sm sm:text-base whitespace-nowrap ${
+                      trader.liquidations === 0
+                        ? "text-green-400"
+                        : "text-red-400"
+                    }`}
+                  >
+                    {trader.liquidations}
+                  </span>
+                </div>
+
+                {/* Win Rate */}
+                <div className="flex items-center justify-center">
+                  <span className="text-white font-medium text-sm sm:text-base whitespace-nowrap">
+                    {trader.winRate}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
-
-          {/* Table Rows */}
-          {traders.map((trader, index) => (
-            <div
-              key={trader.id}
-              className={`grid grid-cols-9 gap-4 px-6 py-4 hover:bg-slate-750 transition-colors min-w-[1200px] ${
-                index !== traders.length - 1 ? "border-b border-slate-700" : ""
-              }`}
-            >
-              {/* Trader Info */}
-              <div className="flex items-center gap-3">
-                <div
-                  className={`w-10 h-10 rounded-full ${trader.avatarBg} flex items-center justify-center text-white text-sm font-semibold`}
-                >
-                  {trader.avatar}
-                </div>
-                <div>
-                  <div className="text-white font-medium">{trader.name}</div>
-                  <div className="text-slate-400 text-sm">{trader.assets}</div>
-                </div>
-              </div>
-
-              {/* PNL */}
-              <div className="flex items-center justify-center">
-                <span className="text-green-400 font-semibold">
-                  {trader.pnl}
-                </span>
-              </div>
-
-              {/* Avg PNL */}
-              <div className="flex items-center justify-center">
-                <span className="text-green-400 font-medium">
-                  {trader.avgPnl}
-                </span>
-              </div>
-
-              {/* Config PNL */}
-              <div className="flex items-center justify-center">
-                <span className="text-green-400 font-medium">
-                  {trader.configPnl}
-                </span>
-              </div>
-
-              {/* Avg Drawdown */}
-              <div className="flex items-center justify-center">
-                <span className="text-red-400 font-medium">
-                  {trader.avgDrawdown}
-                </span>
-              </div>
-
-              {/* Max Drawdown */}
-              <div className="flex items-center justify-center">
-                <span className="text-red-400 font-medium">
-                  {trader.maxDrawdown}
-                </span>
-              </div>
-
-              {/* Total Trades */}
-              <div className="flex items-center justify-center">
-                <span className="text-white font-medium">
-                  {trader.totalTrades}
-                </span>
-              </div>
-
-              {/* Liquidations */}
-              <div className="flex items-center justify-center">
-                <span
-                  className={`font-medium ${
-                    trader.liquidations === 0
-                      ? "text-green-400"
-                      : "text-red-400"
-                  }`}
-                >
-                  {trader.liquidations}
-                </span>
-              </div>
-
-              {/* Win Rate */}
-              <div className="flex items-center justify-center">
-                <span className="text-white font-medium">{trader.winRate}</span>
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* Footer with pagination */}
-        <div className="flex items-center justify-between mt-6">
-          <div className="text-slate-400 text-sm">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0 mt-4 sm:mt-6">
+          <div className="text-slate-400 text-xs sm:text-sm">
             Showing 5 of {totalTraders.toLocaleString()} traders
           </div>
           <div className="flex items-center gap-2">{renderPagination()}</div>

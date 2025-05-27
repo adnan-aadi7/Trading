@@ -18,7 +18,7 @@ const Dashboard = () => {
       <div className="px-3 sm:px-4 md:px-6">
         <TradingMetricsCards />
       </div>
-      
+
       <TradingMetricsCards2 />
 
       {/* Two-column section */}
@@ -38,9 +38,8 @@ const Dashboard = () => {
       </div>
 
       {/* Full-width Leaderboard */}
-      <div className="px-3 sm:px-4 md:px-6 lg:px-[100px] py-4">
-        <Leaderboard />
-      </div>
+
+      <Leaderboard />
     </>
   );
 };

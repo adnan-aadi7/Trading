@@ -83,33 +83,39 @@ const TradingFilter = () => {
   );
 
   return (
-    <div className="bg-slate-900 px-4 sm:px-6 py-1 border-b border-slate-700">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
-        <div className="flex flex-wrap items-center gap-3 sm:gap-6">
-          <FilterDropdown
-            label="Timeframe"
-            filterType="timeframe"
-            value={filters.timeframe}
-          />
-          <FilterDropdown label="Pair" filterType="pair" value={filters.pair} />
-          <FilterDropdown
-            label="Leverage"
-            filterType="leverage"
-            value={filters.leverage}
-          />
-          <FilterDropdown
-            label="Min. PNL"
-            filterType="minPnl"
-            value={filters.minPnl}
-          />
-        </div>
+    <div className="bg-slate-900 border-b border-slate-700 px-8">
+      <div className="container mx-auto px-4 py-1">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-6">
+            <FilterDropdown
+              label="Timeframe"
+              filterType="timeframe"
+              value={filters.timeframe}
+            />
+            <FilterDropdown
+              label="Pair"
+              filterType="pair"
+              value={filters.pair}
+            />
+            <FilterDropdown
+              label="Leverage"
+              filterType="leverage"
+              value={filters.leverage}
+            />
+            <FilterDropdown
+              label="Min. PNL"
+              filterType="minPnl"
+              value={filters.minPnl}
+            />
+          </div>
 
-        <div className="flex items-center gap-2 text-sm">
-          <span className="text-slate-400">Last updated:</span>
-          <span className="text-slate-300 whitespace-nowrap">
-            2023-05-17 23:50:29 UTC
-          </span>
-          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-slate-400">Last updated:</span>
+            <span className="text-slate-300 whitespace-nowrap">
+              2023-05-17 23:50:29 UTC
+            </span>
+            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+          </div>
         </div>
       </div>
     </div>
