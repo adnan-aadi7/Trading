@@ -50,14 +50,14 @@ const TradingFilter = () => {
 
   const FilterDropdown = ({ label, filterType, value }) => (
     <div className="relative">
-      <label className="text-slate-400 text-sm mr-2">{label}:</label>
+      <label className="text-slate-400 text-xs sm:text-sm mr-2">{label}:</label>
       <button
         onClick={() => toggleDropdown(filterType)}
-        className="bg-slate-800 text-white px-2 sm:px-3 py-1 rounded border border-slate-600 hover:border-slate-500 transition-colors flex items-center gap-2 min-w-[70px] sm:min-w-[80px]"
+        className="bg-slate-800 text-white px-2 py-1 rounded border border-slate-600 hover:border-slate-500 transition-colors flex items-center gap-1.5 min-w-[60px] sm:min-w-[70px] text-xs sm:text-sm"
       >
         <span className="truncate">{value}</span>
         <ChevronDown
-          size={14}
+          size={12}
           className={`transition-transform flex-shrink-0 ${
             dropdownOpen[filterType] ? "rotate-180" : ""
           }`}
@@ -65,12 +65,12 @@ const TradingFilter = () => {
       </button>
 
       {dropdownOpen[filterType] && (
-        <div className="absolute top-full left-0 mt-1 bg-slate-800 border border-slate-600 rounded shadow-lg z-10 min-w-[120px] max-h-[300px] overflow-y-auto">
+        <div className="absolute top-full left-0 mt-1 bg-slate-800 border border-slate-600 rounded shadow-lg z-10 min-w-[100px] max-h-[300px] overflow-y-auto">
           {filterOptions[filterType].map((option) => (
             <button
               key={option}
               onClick={() => handleFilterChange(filterType, option)}
-              className={`w-full text-left px-3 py-2 hover:bg-slate-700 transition-colors ${
+              className={`w-full text-left px-2 py-1.5 hover:bg-slate-700 transition-colors text-xs sm:text-sm ${
                 value === option ? "bg-slate-700 text-blue-400" : "text-white"
               }`}
             >
@@ -86,7 +86,7 @@ const TradingFilter = () => {
     <div className="bg-slate-900 border-b border-slate-700 px-8">
       <div className="container mx-auto px-4 py-1">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
-          <div className="flex flex-wrap items-center gap-3 sm:gap-6">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-4">
             <FilterDropdown
               label="Timeframe"
               filterType="timeframe"
@@ -109,12 +109,12 @@ const TradingFilter = () => {
             />
           </div>
 
-          <div className="flex items-center gap-2 text-sm">
+          <div className="flex items-center gap-2 text-xs sm:text-sm">
             <span className="text-slate-400">Last updated:</span>
             <span className="text-slate-300 whitespace-nowrap">
               2023-05-17 23:50:29 UTC
             </span>
-            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+            <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
           </div>
         </div>
       </div>

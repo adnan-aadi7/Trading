@@ -3,6 +3,9 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Dashboard from "./dasboard/page/Dashboard";
 import Traders from "./traders/page/Traders";
 import Trade from "./trade/pages/Trades";
+import Analytics from "./analytics/page/Analytics";
+import LeaderBoard from "./leaderboard/page/LeaderBoard";
+
 function App() {
   return (
     <BrowserRouter>
@@ -11,7 +14,8 @@ function App() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/traders" element={<Traders />} />
         <Route path="/trade" element={<Trade />} />
-        {/* Add more routes as needed */}
+        <Route path="/analytics" element={<Analytics />} />
+        <Route path="/leaderboard" element={<LeaderBoard />} />
       </Routes>
     </BrowserRouter>
   );

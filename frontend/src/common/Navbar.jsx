@@ -23,7 +23,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className=" lg:px-16 py-3">
+    <nav className=" lg:px-12 py-3">
       <div className="flex items-center justify-between">
         {/* Left side */}
         <div className="flex items-center space-x-4">
