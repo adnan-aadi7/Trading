@@ -245,11 +245,11 @@ const Leaderboard = () => {
             Trader Performance Leaderboard
           </h1>
           <div className="flex gap-2 sm:gap-3">
-            <button className="flex items-center gap-1.5 sm:gap-2 bg-slate-700 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
+            <button className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
               <Filter size={14} className="sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Filters</span>
             </button>
-            <button className="flex items-center gap-1.5 sm:gap-2 bg-slate-700 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
+            <button className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
               <Download size={14} className="sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Export</span>
             </button>
@@ -257,11 +257,11 @@ const Leaderboard = () => {
         </div>
 
         {/* Table Container */}
-        <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden">
+        <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900">
           <div className="overflow-x-auto">
             <div className="min-w-[1200px]">
               {/* Table Header */}
-              <div className="grid grid-cols-16 gap-1 px-2 sm:px-3 py-2 sm:py-3 bg-slate-800 border-b border-slate-700 text-xs">
+              <div className="grid grid-cols-16 gap-1 px-2 sm:px-3 py-2 sm:py-3 bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border-b border-slate-700 text-xs">
                 <div className="text-slate-400 font-medium col-span-2 text-xs sm:text-sm">
                   Trader
                 </div>

@@ -45,10 +45,13 @@ const cardData = [
 
 const TradingMetricsCards2 = () => {
   return (
-    <div className="p-3 sm:p-4 md:p-6 px-4 sm:px-6 md:px-8 lg:px-12">
+    <div className="p-3 sm:p-4 md:p-6 px-4 sm:px-6 md:px-8 lg:px-12 ">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full">
         {cardData.map((card, index) => (
-          <div key={index} className="bg-gray-800 rounded-lg p-3 sm:p-4 w-full">
+          <div
+            key={index}
+            className="bg-gray-800 rounded-lg p-3 sm:p-4 w-full bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900"
+          >
             <div className="flex items-center justify-between mb-2 sm:mb-3">
               <h3 className="text-gray-400 text-xs sm:text-sm font-medium truncate">
                 {card.title}

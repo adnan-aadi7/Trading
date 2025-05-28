@@ -39,7 +39,7 @@ const TradeActivityChart = () => {
   };
 
   return (
-    <div className="w-full bg-slate-800 text-white mt-4 sm:mt-6">
+    <div className="w-full bg-slate-800 text-white mt-4 sm:mt-6 bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900">
       <div className="px-2 sm:px-4 py-2 sm:py-3">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 mb-3 sm:mb-4">

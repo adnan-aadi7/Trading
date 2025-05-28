@@ -9,7 +9,7 @@ const NavbarUpdated = () => {
   );
 
   return (
-    <nav className="sticky top-0 z-50 bg-slate-900 border-b border-slate-700 px-4 sm:px-14 md:px-6 lg:px-12 ">
+    <nav className="sticky top-0 z-50 bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border-b border-slate-700 px-4 sm:px-14 md:px-6 lg:px-12 ">
       <div className="flex items-center justify-between gap-2">
         {/* Logo */}
         <div className="flex items-center gap-1 sm:gap-2">
@@ -24,7 +24,7 @@ const NavbarUpdated = () => {
         </div>
 
         {/* Search Bar - Always visible */}
-        <div className="flex-1 mx-2 sm:mx-4 md:mx-8 max-w-[200px] sm:max-w-[300px] md:max-w-[400px] lg:max-w-[500px]">
+        <div className="flex-1 mx-2 sm:mx-4 md:mx-8 max-w-[200px] sm:max-w-[300px] md:max-w-[400px] lg:max-w-[500px] bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900">
           <div className="relative w-full">
             <Search
               className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400"
