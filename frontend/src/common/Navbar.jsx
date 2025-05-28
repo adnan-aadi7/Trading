@@ -15,11 +15,11 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Dashboard", path: "/" },
-    { name: "Traders", path: "/traders" },
-    { name: "Trades", path: "/trade" },
-    { name: "Analytics", path: "/analytics" },
-    { name: "Leaderboard", path: "/leaderboard" },
+    // { name: "Dashboard", path: "/" },
+    // { name: "Traders", path: "/traders" },
+    // { name: "Trades", path: "/trade" },
+    // { name: "Analytics", path: "/analytics" },
+    // { name: "Leaderboard", path: "/leaderboard" },
   ];
 
   return (
@@ -48,10 +48,10 @@ const Navbar = () => {
               </Link>
             ))}
 
-            <div className="flex items-center text-gray-300 hover:text-white transition-colors cursor-pointer">
+            {/* <div className="flex items-center text-gray-300 hover:text-white transition-colors cursor-pointer">
               <span>More</span>
               <ChevronDown className="w-4 h-4 ml-1" />
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -82,10 +82,10 @@ const Navbar = () => {
           {/* Desktop only items */}
           <div className="hidden md:flex items-center space-x-4">
             {/* New Alert Button */}
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors">
+            {/* <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors">
               <Plus className="w-4 h-4" />
               <span>New Alert</span>
-            </button>
+            </button> */}
 
             {/* Icons */}
             <button className="text-gray-300 hover:text-white transition-colors">

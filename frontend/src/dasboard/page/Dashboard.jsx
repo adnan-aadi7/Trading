@@ -1,20 +1,19 @@
 import React from "react";
-import Navbar from "../../common/Navbar";
-import TradingFilter from "../components/TradingFilter";
-import TradingMetricsCards from "../../common/TradingMetricsCards";
-import TradingMetricsCards2 from "../../common/TradingMetricsCards2";
-import TradeActivityChart from "../../common/TradeActivityChart";
-import ActiveTraders from "../../common/ActiveTraders";
-import PopularActivePairs from "../../common/PopularActivePairs";
-import LiveFeed from "../../common/LiveFeed";
-import StreakTraders from "../../common/Streaktraders";
-import Leaderboard from "../../common/LeaderBoard";
+import TradingMetricsCards from "../components/TradingMetricsCards";
+import TradingMetricsCards2 from "../components/TradingMetricsCards2";
+import TradeActivityChart from "../components/TradeActivityChart";
+import ActiveTraders from "../components/ActiveTraders";
+import PopularActivePairs from "../components/PopularActivePairs";
+import LiveFeed from "../components/LiveFeed";
+import StreakTraders from "../components/Streaktraders";
+import Leaderboard from "../components/LeaderBoard";
+import NavbarUpdated from "../../common/NavbarUpdated";
 
 const Dashboard = () => {
   return (
     <>
-      <Navbar />
-      <TradingFilter />
+      <NavbarUpdated />
+
       <div className="px-3 sm:px-4 md:px-6">
         <TradingMetricsCards />
       </div>

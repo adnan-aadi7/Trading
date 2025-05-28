@@ -10,7 +10,7 @@ const metrics = [
     bottomStats: [
       { label: "Long", value: "35%", color: "green-400", bold: true },
       { label: "Neutral", value: "15%", color: "gray-400", bold: false },
-      { label: "Short", value: "50%", color: "red-400", bold: true },
+      { label: "Short", value: "65%", color: "red-400", bold: true },
     ],
   },
   {
