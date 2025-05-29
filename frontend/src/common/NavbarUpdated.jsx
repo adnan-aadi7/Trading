@@ -9,7 +9,7 @@ const NavbarUpdated = () => {
   );
 
   return (
-    <nav className="sticky top-0 z-50 bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border-b border-slate-700 px-4 sm:px-14 md:px-6 lg:px-12 ">
+    <nav className="sticky top-0 z-50  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border-b border-slate-700 px-4 sm:px-14 md:px-6 lg:px-12 ">
       <div className="flex items-center justify-between gap-2">
         {/* Logo */}
         <div className="flex items-center gap-1 sm:gap-2">

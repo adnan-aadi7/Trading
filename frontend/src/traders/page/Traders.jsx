@@ -1,10 +1,26 @@
 import React from "react";
-import Navbar from "../../common/Navbar";
+import NavbarUpdated from "../../common/NavbarUpdated";
+import TraderAnalysis from "../components/TraderAnalysis";
+import TraderProfile from "../components/TraderProfile";
+import VirtualWalletEvolution from "../components/VirtualWalletEvolution";
+import TimeBasePerformance from "../components/TimebasePeformance";
+import BehaviorMetrics from "../components/BehaviorMetrics";
+import PerformanceComparison from "../components/PerformanceComparison";
+import WalletComparisonChart from "../components/WalletComparisonChart";
+import TradeHistoryTable from "../components/TradeHistoryTable";
 
 const Traders = () => {
   return (
     <>
-      <Navbar />
+      <NavbarUpdated />
+      <TraderAnalysis />
+      <TraderProfile />
+      <VirtualWalletEvolution />
+      <TimeBasePerformance />
+      <BehaviorMetrics />
+      <PerformanceComparison />
+      <WalletComparisonChart />
+      <TradeHistoryTable />
     </>
   );
 };

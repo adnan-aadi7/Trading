@@ -1,35 +1,41 @@
 import React, { useState } from "react";
 import { TrendingUp } from "lucide-react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  ReferenceLine,
+  Dot,
+} from "recharts";
 
 const PriceActionChart = () => {
   const [activeTimeframe, setActiveTimeframe] = useState("4H");
 
-  // Generate realistic candlestick data with trade points
-  const generateCandleData = () => {
+  // Generate realistic price data with trade points
+  const generatePriceData = () => {
     const basePrice = 27000;
     const data = [];
     let currentPrice = basePrice;
 
     for (let i = 0; i < 60; i++) {
-      const open = currentPrice;
-      const volatility = Math.random() * 0.03; // 3% max volatility
-      const trend = i < 20 ? 0.002 : i < 45 ? 0.001 : -0.001; // Upward trend then decline
+      const trend = i < 20 ? 0.002 : i < 45 ? 0.001 : -0.001;
+      const volatility = Math.random() * 0.02 - 0.01;
 
-      // Generate OHLC data
-      const high = open * (1 + volatility + Math.abs(trend));
-      const low = open * (1 - volatility);
-      const close = open * (1 + trend + (Math.random() * 0.02 - 0.01));
+      currentPrice = currentPrice * (1 + trend + volatility);
 
-      currentPrice = close;
+      const hours = Math.floor(i / 4);
+      const minutes = (i % 4) * 15;
+      const timeLabel = `May 1${hours < 4 ? 2 : 3}, ${String(
+        (hours % 4) * 6 + Math.floor(minutes / 30) * 2
+      ).padStart(2, "0")}:${String(minutes % 60).padStart(2, "0")}`;
 
       data.push({
-        time: new Date(Date.now() - (60 - i) * 4 * 3600000)
-          .toISOString()
-          .slice(5, 10),
-        open: Math.round(open * 100) / 100,
-        high: Math.round(high * 100) / 100,
-        low: Math.round(low * 100) / 100,
-        close: Math.round(close * 100) / 100,
+        time: timeLabel,
+        price: Math.round(currentPrice * 100) / 100,
         isEntryPoint: i === 8,
         isPositionIncrease: i === 20,
         isPartialClose: i === 35,
@@ -40,63 +46,98 @@ const PriceActionChart = () => {
     return data;
   };
 
-  const [chartData] = useState(generateCandleData());
+  const [chartData] = useState(generatePriceData());
 
-  // Calculate chart dimensions
-  const chartWidth = 800;
-  const chartHeight = 300;
-  const padding = { top: 20, right: 60, bottom: 40, left: 60 };
-  const plotWidth = chartWidth - padding.left - padding.right;
-  const plotHeight = chartHeight - padding.top - padding.bottom;
+  // Custom dot component for trade markers
+  const CustomDot = (props) => {
+    const { cx, cy, payload } = props;
 
-  // Find price range
-  const allPrices = chartData.flatMap((d) => [d.high, d.low]);
-  const minPrice = Math.min(...allPrices);
-  const maxPrice = Math.max(...allPrices);
-  const priceRange = maxPrice - minPrice;
-
-  // Price to Y coordinate
-  const priceToY = (price) => {
-    return padding.top + ((maxPrice - price) / priceRange) * plotHeight;
-  };
-
-  // X coordinate for each candle
-  const candleWidth = plotWidth / chartData.length;
-
-  const TradeMarker = ({ x, y, type, price }) => {
-    const colors = {
-      entry: "#10b981",
-      increase: "#3b82f6",
-      partial: "#f59e0b",
-      exit: "#ef4444",
-    };
-
-    return (
-      <g>
-        <circle
-          cx={x}
-          cy={y}
-          r="4"
-          fill={colors[type]}
+    if (payload.isEntryPoint) {
+      return (
+        <Dot
+          cx={cx}
+          cy={cy}
+          r={6}
+          fill="#10b981"
           stroke="#fff"
-          strokeWidth="2"
+          strokeWidth={2}
         />
-        <text
-          x={x}
-          y={y - 15}
-          textAnchor="middle"
-          fill={colors[type]}
-          fontSize="10"
-          fontWeight="bold"
-        >
-          ${price.toLocaleString()}
-        </text>
-      </g>
-    );
+      );
+    }
+    if (payload.isPositionIncrease) {
+      return (
+        <Dot
+          cx={cx}
+          cy={cy}
+          r={6}
+          fill="#3b82f6"
+          stroke="#fff"
+          strokeWidth={2}
+        />
+      );
+    }
+    if (payload.isPartialClose) {
+      return (
+        <Dot
+          cx={cx}
+          cy={cy}
+          r={6}
+          fill="#f59e0b"
+          stroke="#fff"
+          strokeWidth={2}
+        />
+      );
+    }
+    if (payload.isExitPoint) {
+      return (
+        <Dot
+          cx={cx}
+          cy={cy}
+          r={6}
+          fill="#ef4444"
+          stroke="#fff"
+          strokeWidth={2}
+        />
+      );
+    }
+
+    return null;
   };
+
+  // Custom tooltip
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload;
+      return (
+        <div className="bg-slate-700 border border-slate-600 rounded-lg p-3 shadow-lg">
+          <p className="text-gray-300 text-sm">{label}</p>
+          <p className="text-white font-semibold">
+            ${payload[0].value.toLocaleString()}
+          </p>
+          {data.isEntryPoint && (
+            <p className="text-green-400 text-xs">Entry Point</p>
+          )}
+          {data.isPositionIncrease && (
+            <p className="text-blue-400 text-xs">Position Increase</p>
+          )}
+          {data.isPartialClose && (
+            <p className="text-yellow-400 text-xs">Partial Close</p>
+          )}
+          {data.isExitPoint && (
+            <p className="text-red-400 text-xs">Exit Point</p>
+          )}
+        </div>
+      );
+    }
+    return null;
+  };
+
+  // Get reference line values
+  const entryPoint = chartData.find((d) => d.isEntryPoint);
+  const exitPoint = chartData.find((d) => d.isExitPoint);
 
   return (
-    <div className="bg-slate-800 rounded-lg p-3 sm:p-4 md:p-6">
+    <div className="bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 rounded-lg p-3 sm:p-4 md:p-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 mb-4 sm:mb-6">
         <h2 className="text-white text-lg sm:text-xl font-semibold">
@@ -130,185 +171,74 @@ const PriceActionChart = () => {
       </div>
 
       {/* Chart Container */}
-      <div className="bg-slate-900 rounded-lg p-2 sm:p-4 mb-4 sm:mb-6 overflow-x-auto">
-        <svg
-          width={Math.min(chartWidth, window.innerWidth - 32)}
-          height={chartHeight}
-          className="w-full"
-        >
-          {/* Grid lines */}
-          <defs>
-            <pattern
-              id="grid"
-              width="40"
-              height="30"
-              patternUnits="userSpaceOnUse"
+      <div className="bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 rounded-lg p-2 sm:p-4 mb-4 sm:mb-6">
+        <div className="h-80 w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart
+              data={chartData}
+              margin={{
+                top: 20,
+                right: 30,
+                left: 20,
+                bottom: 20,
+              }}
             >
-              <path
-                d="M 40 0 L 0 0 0 30"
-                fill="none"
+              <CartesianGrid
+                strokeDasharray="3 3"
                 stroke="#374151"
-                strokeWidth="0.5"
-                opacity="0.3"
+                opacity={0.3}
               />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
+              <XAxis
+                dataKey="time"
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: "#9ca3af", fontSize: 11 }}
+                interval="preserveStartEnd"
+                tickFormatter={(value) => {
+                  const parts = value.split(", ");
+                  return parts[1] || value;
+                }}
+              />
+              <YAxis
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: "#9ca3af", fontSize: 11 }}
+                tickFormatter={(value) =>
+                  `$${Math.round(value).toLocaleString()}`
+                }
+                domain={["dataMin - 100", "dataMax + 100"]}
+              />
+              <Tooltip content={<CustomTooltip />} />
 
-          {/* Y-axis price labels */}
-          {[0, 0.25, 0.5, 0.75, 1].map((ratio) => {
-            const price = minPrice + priceRange * ratio;
-            const y = priceToY(price);
-            return (
-              <g key={ratio}>
-                <line
-                  x1={padding.left}
-                  y1={y}
-                  x2={chartWidth - padding.right}
-                  y2={y}
-                  stroke="#374151"
-                  strokeWidth="0.5"
-                  opacity="0.5"
+              {/* Reference lines */}
+              {entryPoint && (
+                <ReferenceLine
+                  y={entryPoint.price}
+                  stroke="#10b981"
+                  strokeDasharray="4 4"
+                  strokeOpacity={0.6}
                 />
-                <text
-                  x={chartWidth - padding.right + 10}
-                  y={y + 4}
-                  fill="#9ca3af"
-                  fontSize="11"
-                >
-                  ${Math.round(price).toLocaleString()}
-                </text>
-              </g>
-            );
-          })}
-
-          {/* Candlesticks */}
-          {chartData.map((candle, index) => {
-            const x = padding.left + index * candleWidth + candleWidth / 2;
-            const isGreen = candle.close > candle.open;
-            const color = isGreen ? "#10b981" : "#ef4444";
-
-            const highY = priceToY(candle.high);
-            const lowY = priceToY(candle.low);
-            const openY = priceToY(candle.open);
-            const closeY = priceToY(candle.close);
-
-            const bodyTop = Math.min(openY, closeY);
-            const bodyBottom = Math.max(openY, closeY);
-            const bodyHeight = Math.max(bodyBottom - bodyTop, 1);
-
-            return (
-              <g key={index}>
-                {/* Wick */}
-                <line
-                  x1={x}
-                  y1={highY}
-                  x2={x}
-                  y2={lowY}
-                  stroke={color}
-                  strokeWidth="1"
+              )}
+              {exitPoint && (
+                <ReferenceLine
+                  y={exitPoint.price}
+                  stroke="#ef4444"
+                  strokeDasharray="4 4"
+                  strokeOpacity={0.6}
                 />
+              )}
 
-                {/* Body */}
-                <rect
-                  x={x - candleWidth * 0.3}
-                  y={bodyTop}
-                  width={candleWidth * 0.6}
-                  height={bodyHeight}
-                  fill={isGreen ? color : "transparent"}
-                  stroke={color}
-                  strokeWidth="1"
-                />
-
-                {/* Trade markers */}
-                {candle.isEntryPoint && (
-                  <TradeMarker
-                    x={x}
-                    y={closeY}
-                    type="entry"
-                    price={candle.close}
-                  />
-                )}
-                {candle.isPositionIncrease && (
-                  <TradeMarker
-                    x={x}
-                    y={closeY}
-                    type="increase"
-                    price={candle.close}
-                  />
-                )}
-                {candle.isPartialClose && (
-                  <TradeMarker
-                    x={x}
-                    y={closeY}
-                    type="partial"
-                    price={candle.close}
-                  />
-                )}
-                {candle.isExitPoint && (
-                  <TradeMarker
-                    x={x}
-                    y={closeY}
-                    type="exit"
-                    price={candle.close}
-                  />
-                )}
-              </g>
-            );
-          })}
-
-          {/* X-axis time labels */}
-          {chartData
-            .filter((_, i) => i % 10 === 0)
-            .map((candle, index) => {
-              const x =
-                padding.left + index * 10 * candleWidth + candleWidth / 2;
-              return (
-                <text
-                  key={index}
-                  x={x}
-                  y={chartHeight - 10}
-                  textAnchor="middle"
-                  fill="#9ca3af"
-                  fontSize="11"
-                >
-                  {candle.time}
-                </text>
-              );
-            })}
-
-          {/* Reference lines for entry and exit */}
-          {(() => {
-            const entryCandle = chartData.find((d) => d.isEntryPoint);
-            const exitCandle = chartData.find((d) => d.isExitPoint);
-            return (
-              <>
-                {entryCandle && (
-                  <line
-                    x1={padding.left}
-                    y1={priceToY(entryCandle.close)}
-                    x2={chartWidth - padding.right}
-                    y2={priceToY(entryCandle.close)}
-                    stroke="#10b981"
-                    strokeDasharray="4 4"
-                    strokeOpacity="0.6"
-                  />
-                )}
-                {exitCandle && (
-                  <line
-                    x1={padding.left}
-                    y1={priceToY(exitCandle.close)}
-                    x2={chartWidth - padding.right}
-                    y2={priceToY(exitCandle.close)}
-                    stroke="#ef4444"
-                    strokeDasharray="4 4"
-                    strokeOpacity="0.6"
-                  />
-                )}
-              </>
-            );
-          })()}
-        </svg>
+              <Line
+                type="monotone"
+                dataKey="price"
+                stroke="#ffffff"
+                strokeWidth={2}
+                dot={<CustomDot />}
+                activeDot={{ r: 6, stroke: "#fff", strokeWidth: 2 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
       </div>
 
       {/* Legend */}

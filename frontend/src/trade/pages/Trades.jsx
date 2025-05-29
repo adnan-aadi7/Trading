@@ -6,13 +6,13 @@ import PositionDynamics from "../components/PositionDynamics";
 import TradeTimeline from "../components/TradeTimeline";
 import RiskMetrics from "../components/RiskMetrics";
 import MarketContext from "../components/MarketContext";
-import Navbar from "../../common/Navbar";
+import NavbarUpdated from "../../common/NavbarUpdated";
 
 const Trades = () => {
   // Changed component name to Trades for clarity
   return (
     <>
-      <Navbar />
+      <NavbarUpdated />
       {/* <SubNavbar /> SubNavbar added here */}
       <Heading />
       {/* Two-column layout container */}
