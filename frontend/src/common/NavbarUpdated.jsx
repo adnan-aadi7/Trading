@@ -1,26 +1,29 @@
 import React, { useState } from "react";
-import { Search, SlidersHorizontal } from "lucide-react";
-import logo from "../assets/images/logo.svg"; // Adjust the path as necessary
+import { Search, SlidersHorizontal, Clock, ChevronDown } from "lucide-react";
+import logo from "../assets/images/updatedlogo.svg"; // Adjust the path as necessary
 
 const NavbarUpdated = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [avatarSrc, setAvatarSrc] = useState(
-    `https://picsum.photos/200/200?random=${Math.floor(Math.random() * 1000)}`
-  );
+  const [isTimeDropdownOpen, setIsTimeDropdownOpen] = useState(false);
+  const [selectedTime, setSelectedTime] = useState("24H");
+
+  const timeOptions = ["1H", "4H", "12H", "24H", "7D", "30D"];
+
+  const handleTimeSelect = (time) => {
+    setSelectedTime(time);
+    setIsTimeDropdownOpen(false);
+  };
 
   return (
-    <nav className="sticky top-0 z-50  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border-b border-slate-700 px-4 sm:px-14 md:px-6 lg:px-12 ">
+    <nav className="sticky top-0 z-50  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border-b border-slate-700 px-4 sm:px-14 md:px-6 lg:px-13 py-5 ">
       <div className="flex items-center justify-between gap-2">
         {/* Logo */}
         <div className="flex items-center gap-1 sm:gap-2">
           <img
             src={logo}
             alt="CopyTradeX Logo"
-            className="h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16"
+            className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12"
           />
-          <span className="hidden sm:block text-base sm:text-lg font-semibold text-white">
-            Copy Cat
-          </span>
         </div>
 
         {/* Search Bar - Always visible */}
@@ -48,27 +51,41 @@ const NavbarUpdated = () => {
             <span className="text-xs sm:text-sm font-medium">Config</span>
           </button>
 
-          {/* Profile Avatar */}
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-slate-600 bg-slate-700">
-            <img
-              src={avatarSrc}
-              alt="Profile"
-              className="w-full h-full object-cover"
-              onError={() =>
-                setAvatarSrc(
-                  "https://via.placeholder.com/200x200/64748b/ffffff?text=U"
-                )
-              }
-            />
+          {/* Time Period Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setIsTimeDropdownOpen(!isTimeDropdownOpen)}
+              className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-white transition-colors"
+            >
+              <Clock size={16} />
+              <span className="text-xs sm:text-sm font-medium">
+                {selectedTime}
+              </span>
+              <ChevronDown
+                size={14}
+                className={`transition-transform ${
+                  isTimeDropdownOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {isTimeDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-24 bg-slate-800 border border-slate-600 rounded-lg shadow-lg z-50">
+                {timeOptions.map((time) => (
+                  <button
+                    key={time}
+                    onClick={() => handleTimeSelect(time)}
+                    className={`w-full px-3 py-2 text-left text-xs sm:text-sm hover:bg-slate-700 transition-colors ${
+                      selectedTime === time ? "text-blue-400" : "text-white"
+                    }`}
+                  >
+                    {time}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
-      </div>
-      <div className="flex justify-end gap-2 text-sm sm:text-sm">
-        <span className="text-slate-400">Last updated:</span>
-        <span className="text-slate-300 whitespace-nowrap">
-          2023-05-17 23:50:29 UTC
-        </span>
-        <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
       </div>
     </nav>
   );

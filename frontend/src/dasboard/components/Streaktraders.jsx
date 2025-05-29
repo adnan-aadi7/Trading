@@ -124,7 +124,7 @@ const StreakTraders = () => {
             Top 10 Hot Streak Traders
           </h1>
           <div className="relative w-full sm:w-auto">
-            <select className="w-full sm:w-auto bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 text-white px-3 sm:px-4 py-2 pr-10 rounded-lg border border-slate-700 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+            <select className="w-full sm:w-auto  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 text-white px-3 sm:px-4 py-2 pr-10 rounded-lg border border-slate-700 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
               <option>Sort by PNL</option>
               <option>Sort by Win Rate</option>
               <option>Sort by Win Streak</option>

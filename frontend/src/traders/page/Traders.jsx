@@ -8,6 +8,7 @@ import BehaviorMetrics from "../components/BehaviorMetrics";
 import PerformanceComparison from "../components/PerformanceComparison";
 import WalletComparisonChart from "../components/WalletComparisonChart";
 import TradeHistoryTable from "../components/TradeHistoryTable";
+import Footer from "../../common/Footer";
 
 const Traders = () => {
   return (
@@ -21,6 +22,7 @@ const Traders = () => {
       <PerformanceComparison />
       <WalletComparisonChart />
       <TradeHistoryTable />
+      <Footer />
     </>
   );
 };

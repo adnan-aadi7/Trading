@@ -1,22 +1,103 @@
 import React from "react";
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
 
 const PopularActivePairs = () => {
   const data = [
-    { pair: "BTC/USDT", value: 18000, color: "#ef4444" },
-    { pair: "ETH/USDT", value: 14000, color: "#3b82f6" },
-    { pair: "SOL/USDT", value: 10000, color: "#f97316" },
-    { pair: "BNB/USDT", value: 7500, color: "#22c55e" },
-    { pair: "XRP/USDT", value: 6000, color: "#a855f7" },
-    { pair: "ADA/USDT", value: 5500, color: "#ec4899" },
-    { pair: "DOGE/USDT", value: 5000, color: "#eab308" },
-    { pair: "AVAX/USDT", value: 4000, color: "#6b7280" },
+    {
+      pair: "BTC/USDT",
+      value: 18000,
+      color: "#ef4444",
+      long: 12000,
+      short: 6000,
+    },
+    {
+      pair: "ETH/USDT",
+      value: 14000,
+      color: "#3b82f6",
+      long: 8500,
+      short: 5500,
+    },
+    {
+      pair: "SOL/USDT",
+      value: 10000,
+      color: "#f97316",
+      long: 6500,
+      short: 3500,
+    },
+    {
+      pair: "BNB/USDT",
+      value: 7500,
+      color: "#22c55e",
+      long: 4800,
+      short: 2700,
+    },
+    {
+      pair: "XRP/USDT",
+      value: 6000,
+      color: "#a855f7",
+      long: 3800,
+      short: 2200,
+    },
+    {
+      pair: "ADA/USDT",
+      value: 5500,
+      color: "#ec4899",
+      long: 3200,
+      short: 2300,
+    },
+    {
+      pair: "DOGE/USDT",
+      value: 5000,
+      color: "#eab308",
+      long: 2800,
+      short: 2200,
+    },
+    {
+      pair: "AVAX/USDT",
+      value: 4000,
+      color: "#6b7280",
+      long: 2200,
+      short: 1800,
+    },
   ];
 
-  const CustomBar = (props) => {
-    const { fill, ...rest } = props;
-    const dataPoint = data.find((d) => d.value === props.payload.value);
-    return <Bar {...rest} fill={dataPoint?.color || fill} />;
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload;
+      return (
+        <div className="bg-gray-800 border border-gray-600 rounded-lg p-3 shadow-xl">
+          <div className="text-blue-400 font-semibold mb-2">{label}</div>
+          <div className="space-y-2">
+            <div className="flex justify-between items-center">
+              <span className="text-gray-300 text-sm">Total Volume:</span>
+              <span className="text-white font-semibold">
+                ${data.value.toLocaleString()}
+              </span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-green-400 text-sm">Long:</span>
+              <span className="text-green-400 font-medium">
+                ${data.long.toLocaleString()}
+              </span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-red-400 text-sm">Short:</span>
+              <span className="text-red-400 font-medium">
+                ${data.short.toLocaleString()}
+              </span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    return null;
   };
 
   const formatYAxisLabel = (value) => {
@@ -24,7 +105,7 @@ const PopularActivePairs = () => {
   };
 
   return (
-    <div className="bg-gray-800 text-white p-3 sm:p-4 md:p-6 rounded-lg w-full bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900">
+    <div className="bg-gray-800 text-white p-3 sm:p-4 md:p-6 rounded-lg w-full  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 mb-4 sm:mb-6">
         <h2 className="text-lg sm:text-xl font-medium text-white">
@@ -69,6 +150,7 @@ const PopularActivePairs = () => {
               width={35}
               grid={false}
             />
+            <Tooltip content={<CustomTooltip />} />
             <Bar
               dataKey="value"
               shape={(props) => {
@@ -81,6 +163,7 @@ const PopularActivePairs = () => {
                     fill={dataPoint?.color || "#3b82f6"}
                     rx={0}
                     ry={0}
+                    className="transition-all duration-200 hover:opacity-80"
                   />
                 );
               }}

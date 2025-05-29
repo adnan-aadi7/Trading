@@ -51,22 +51,22 @@ const LiveFeed = () => {
   };
 
   return (
-    <div className=" p-4  ">
-      <div className="max-w-md mx-auto">
+    <div className="w-full ">
+      <div className="w-full">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
             <h1 className="text-white text-xl font-semibold">Live Feed</h1>
             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
           </div>
-          <button className="flex items-center gap-2 bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-600 text-white px-3 py-2 rounded-lg transition-colors">
+          <button className="flex items-center gap-2 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-600 text-white px-3 py-2 rounded-lg transition-colors">
             <Filter size={16} />
             <span>Filter</span>
           </button>
         </div>
 
         {/* Trade Cards */}
-        <div className="space-y-4 ">
+        <div className="space-y-4 w-full">
           {trades.map((trade) => (
             <div
               key={trade.id}

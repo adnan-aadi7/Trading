@@ -5,11 +5,11 @@ const metrics = [
   {
     title: "Trader Position Index",
     value: "0.72",
-    bar: { green: "33%", red: "67%" },
+    bar: { green: "33%", yellow: "15%", red: "52%" },
     icon: <ChevronDown className="w-4 h-4 text-gray-400" />,
     bottomStats: [
       { label: "Long", value: "35%", color: "green-400", bold: true },
-      { label: "Neutral", value: "15%", color: "gray-400", bold: false },
+      { label: "Neutral", value: "15%", color: "yellow-400", bold: false },
       { label: "Short", value: "65%", color: "red-400", bold: true },
     ],
   },
@@ -74,6 +74,12 @@ const TradingMetricsCards = () => {
                       style={{ width: metric.bar.green }}
                     />
                   )}
+                  {metric.bar?.yellow && (
+                    <div
+                      className="h-full bg-yellow-500"
+                      style={{ width: metric.bar.yellow }}
+                    />
+                  )}
                   {metric.bar?.red && (
                     <div
                       className="h-full bg-red-500"
@@ -105,21 +111,19 @@ const TradingMetricsCards = () => {
 
             {/* Bottom Section */}
             {metric.bottomStats ? (
-              <div className="flex justify-between text-xs sm:text-sm">
+              <div className="flex items-center justify-between text-xs sm:text-sm">
                 {metric.bottomStats.map((stat, idx) => (
-                  <div key={idx} className="flex-shrink-0">
+                  <div key={idx} className="flex items-center">
                     <span className={`text-${stat.color} font-medium`}>
                       {stat.label}
                     </span>
-                    {stat.value && (
-                      <div
-                        className={`text-${stat.color} ${
-                          stat.bold ? "font-bold" : ""
-                        }`}
-                      >
-                        {stat.value}
-                      </div>
-                    )}
+                    <span
+                      className={`text-${stat.color} ${
+                        stat.bold ? "font-bold" : ""
+                      } ml-1`}
+                    >
+                      {stat.value}
+                    </span>
                   </div>
                 ))}
               </div>

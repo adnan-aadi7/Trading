@@ -45,8 +45,8 @@ const ActiveTraders = () => {
   ];
 
   return (
-    <div className=" p-6 ">
-      <div className=" rounded-lg p-6 max-w-md  from-gray-900 via-gray-800 to-indigo-900">
+    <div className="w-full mt-6">
+      <div className="w-full rounded-lg p-6 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-white text-xl font-semibold">
@@ -56,7 +56,7 @@ const ActiveTraders = () => {
         </div>
 
         {/* Traders List */}
-        <div className="space-y-4">
+        <div className="space-y-4 w-full">
           {traders.map((trader) => (
             <div key={trader.rank} className="flex items-center gap-4">
               {/* Rank Circle */}

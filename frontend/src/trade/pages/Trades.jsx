@@ -7,6 +7,7 @@ import TradeTimeline from "../components/TradeTimeline";
 import RiskMetrics from "../components/RiskMetrics";
 import MarketContext from "../components/MarketContext";
 import NavbarUpdated from "../../common/NavbarUpdated";
+import Footer from "../../common/Footer";
 
 const Trades = () => {
   // Changed component name to Trades for clarity
@@ -35,6 +36,7 @@ const Trades = () => {
         </div>
       </div>
       {/* MarketContext component is not included in this layout based on the image */}
+      <Footer />
     </>
   );
 };
