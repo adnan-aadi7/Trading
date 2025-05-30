@@ -40,7 +40,10 @@ const MarketContext = () => {
       {/* Top Metrics Row */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
         {topMetrics.map((metric, index) => (
-          <div key={index} className="bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-3 sm:p-4 rounded-lg">
+          <div
+            key={index}
+            className="bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-3 sm:p-4 rounded-lg"
+          >
             <div className="text-slate-400 text-xs sm:text-sm mb-1 sm:mb-2">
               {metric.title}
             </div>

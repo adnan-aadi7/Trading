@@ -53,7 +53,7 @@
 //       <label className="text-slate-400 text-xs sm:text-sm mr-2">{label}:</label>
 //       <button
 //         onClick={() => toggleDropdown(filterType)}
-//         className="bg-slate-800 text-white px-2 py-1 rounded border border-slate-600 hover:border-slate-500 transition-colors flex items-center gap-1.5 min-w-[60px] sm:min-w-[70px] text-xs sm:text-sm"
+//         className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 text-white px-2 py-1 rounded border border-slate-600 hover:border-slate-500 transition-colors flex items-center gap-1.5 min-w-[60px] sm:min-w-[70px] text-xs sm:text-sm"
 //       >
 //         <span className="truncate">{value}</span>
 //         <ChevronDown
@@ -65,7 +65,7 @@
 //       </button>
 
 //       {dropdownOpen[filterType] && (
-//         <div className="absolute top-full left-0 mt-1 bg-slate-800 border border-slate-600 rounded shadow-lg z-10 min-w-[100px] max-h-[300px] overflow-y-auto">
+//         <div className="absolute top-full left-0 mt-1 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border border-slate-600 rounded shadow-lg z-10 min-w-[100px] max-h-[300px] overflow-y-auto">
 //           {filterOptions[filterType].map((option) => (
 //             <button
 //               key={option}

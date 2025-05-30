@@ -20,6 +20,10 @@ const TradeHistoryTable = () => {
       du: "+5.1%",
       positionInc: "1 (+25%)",
       partialClose: "2 (50%)",
+      leverage: "10x",
+      currentBalance: "$10,108.00",
+      closedBalance: "$10,000.00",
+      riskRatio: "1.5",
     },
     {
       id: 2,
@@ -35,6 +39,10 @@ const TradeHistoryTable = () => {
       du: "+9.8%",
       positionInc: "2 (+75%)",
       partialClose: "3 (65%)",
+      leverage: "20x",
+      currentBalance: "$10,327.00",
+      closedBalance: "$10,108.00",
+      riskRatio: "2.1",
     },
     {
       id: 3,
@@ -50,6 +58,10 @@ const TradeHistoryTable = () => {
       du: "+1.2%",
       positionInc: "0 (0%)",
       partialClose: "1 (30%)",
+      leverage: "5x",
+      currentBalance: "$10,073.50",
+      closedBalance: "$10,127.00",
+      riskRatio: "0.8",
     },
     {
       id: 4,
@@ -65,6 +77,10 @@ const TradeHistoryTable = () => {
       du: "+4.2%",
       positionInc: "1 (+30%)",
       partialClose: "2 (45%)",
+      leverage: "15x",
+      currentBalance: "$10,153.75",
+      closedBalance: "$10,073.50",
+      riskRatio: "1.9",
     },
     {
       id: 5,
@@ -80,6 +96,10 @@ const TradeHistoryTable = () => {
       du: "+14.1%",
       positionInc: "3 (+120%)",
       partialClose: "4 (75%)",
+      leverage: "25x",
+      currentBalance: "$10,475.50",
+      closedBalance: "$10,153.75",
+      riskRatio: "3.5",
     },
   ];
 
@@ -122,7 +142,7 @@ const TradeHistoryTable = () => {
   );
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 text-white p-4 sm:p-6 rounded-lg w-full max-w-[1400px] mx-auto mt-6 sm:mt-10 overflow-x-auto">
+    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 text-white p-4 sm:p-6 rounded-lg w-full max-w-[1400px] mx-auto mt-6 sm:mt-10">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
         <h2 className="text-xl sm:text-2xl font-semibold text-white">
@@ -188,39 +208,51 @@ const TradeHistoryTable = () => {
 
       {/* Table Container */}
       <div className="overflow-x-auto -mx-4 sm:mx-0">
-        <div className="min-w-[800px] px-4 sm:px-0">
+        <div className="min-w-[1200px] px-4 sm:px-0">
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-700">
-                <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm text-gray-400 font-medium whitespace-nowrap">
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
                   Date
                 </th>
-                <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm text-gray-400 font-medium whitespace-nowrap">
-                  Trading Pair
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
+                  Pair
                 </th>
-                <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm text-gray-400 font-medium whitespace-nowrap">
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
                   PNL %
                 </th>
-                <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm text-gray-400 font-medium whitespace-nowrap">
-                  Config PNL
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
+                  Config
                 </th>
-                <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm text-gray-400 font-medium whitespace-nowrap">
-                  Abs PNL (USD)
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
+                  PNL $
                 </th>
-                <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm text-gray-400 font-medium whitespace-nowrap">
-                  Duration
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
+                  Time
                 </th>
-                <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm text-gray-400 font-medium whitespace-nowrap">
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
                   DD %
                 </th>
-                <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm text-gray-400 font-medium whitespace-nowrap">
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
                   DU %
                 </th>
-                <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm text-gray-400 font-medium whitespace-nowrap">
-                  Position Inc.
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
+                  Inc.
                 </th>
-                <th className="text-left py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm text-gray-400 font-medium whitespace-nowrap">
-                  Partial Close
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
+                  Close
+                </th>
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
+                  Lev
+                </th>
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
+                  Balance
+                </th>
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
+                  Closed
+                </th>
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
+                  Risk
                 </th>
               </tr>
             </thead>
@@ -230,64 +262,74 @@ const TradeHistoryTable = () => {
                   key={trade.id}
                   className="border-b border-gray-800 hover:bg-gray-800/50 transition-colors"
                 >
-                  <td className="py-3 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm text-gray-300 whitespace-nowrap">
+                  <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
                     {trade.date}
                   </td>
-                  <td className="py-3 sm:py-4 px-2 sm:px-4 whitespace-nowrap">
-                    <div className="flex items-center gap-1 sm:gap-2">
-                      <span
-                        className={`text-base sm:text-lg ${trade.pairColor}`}
-                      >
+                  <td className="py-2 sm:py-3 px-1 sm:px-2 whitespace-nowrap">
+                    <div className="flex items-center gap-1">
+                      <span className={`text-sm ${trade.pairColor}`}>
                         {trade.pairIcon}
                       </span>
-                      <span className="text-sm sm:text-base text-white font-medium">
+                      <span className="text-[10px] sm:text-xs text-white font-medium">
                         {trade.pair}
                       </span>
                     </div>
                   </td>
                   <td
-                    className={`py-3 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm font-semibold whitespace-nowrap ${getPnlColor(
+                    className={`py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs font-semibold whitespace-nowrap ${getPnlColor(
                       trade.pnlPercent
                     )}`}
                   >
                     {trade.pnlPercent}
                   </td>
                   <td
-                    className={`py-3 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm font-medium whitespace-nowrap ${getPnlColor(
+                    className={`py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs font-medium whitespace-nowrap ${getPnlColor(
                       trade.configPnl
                     )}`}
                   >
                     {trade.configPnl}
                   </td>
                   <td
-                    className={`py-3 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm font-semibold whitespace-nowrap ${getPnlColor(
+                    className={`py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs font-semibold whitespace-nowrap ${getPnlColor(
                       trade.absPnl
                     )}`}
                   >
                     {trade.absPnl}
                   </td>
-                  <td className="py-3 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm text-gray-300 whitespace-nowrap">
+                  <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
                     {trade.duration}
                   </td>
                   <td
-                    className={`py-3 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm font-medium whitespace-nowrap ${getDDColor(
+                    className={`py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs font-medium whitespace-nowrap ${getDDColor(
                       trade.dd
                     )}`}
                   >
                     {trade.dd}
                   </td>
                   <td
-                    className={`py-3 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm font-medium whitespace-nowrap ${getDUColor(
+                    className={`py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs font-medium whitespace-nowrap ${getDUColor(
                       trade.du
                     )}`}
                   >
                     {trade.du}
                   </td>
-                  <td className="py-3 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm text-gray-300 whitespace-nowrap">
+                  <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
                     {trade.positionInc}
                   </td>
-                  <td className="py-3 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm text-gray-300 whitespace-nowrap">
+                  <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
                     {trade.partialClose}
+                  </td>
+                  <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
+                    {trade.leverage}
+                  </td>
+                  <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
+                    {trade.currentBalance}
+                  </td>
+                  <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
+                    {trade.closedBalance}
+                  </td>
+                  <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
+                    {trade.riskRatio}
                   </td>
                 </tr>
               ))}

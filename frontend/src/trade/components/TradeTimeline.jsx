@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TrendingUp } from "lucide-react";
+import { TrendingUp, ArrowUp, ArrowDown, Circle, Minus } from "lucide-react";
 import {
   BarChart,
   Bar,
@@ -52,6 +52,54 @@ const TradeTimeline = () => {
     },
   ];
 
+  // Live feed data
+  const liveFeedData = [
+    {
+      id: 1,
+      time: "14:23:45",
+      type: "open",
+      pair: "BTC/USDT",
+      price: "65,432.10",
+      amount: "0.5 BTC",
+      value: "$32,716.05",
+      color: "text-green-500",
+      icon: <Circle className="w-2 h-2 fill-green-500" />,
+    },
+    {
+      id: 2,
+      time: "14:45:12",
+      type: "increase",
+      pair: "BTC/USDT",
+      price: "65,789.45",
+      amount: "+0.3 BTC",
+      value: "+$19,736.84",
+      color: "text-blue-500",
+      icon: <ArrowUp className="w-3 h-3" />,
+    },
+    {
+      id: 3,
+      time: "15:12:33",
+      type: "decrease",
+      pair: "BTC/USDT",
+      price: "65,123.78",
+      amount: "-0.2 BTC",
+      value: "-$13,024.76",
+      color: "text-yellow-500",
+      icon: <ArrowDown className="w-3 h-3" />,
+    },
+    {
+      id: 4,
+      time: "15:45:21",
+      type: "closed",
+      pair: "BTC/USDT",
+      price: "66,123.45",
+      amount: "0.6 BTC",
+      value: "$39,674.07",
+      color: "text-red-500",
+      icon: <Minus className="w-3 h-3" />,
+    },
+  ];
+
   // Custom tooltip for bar chart
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -100,6 +148,49 @@ const TradeTimeline = () => {
             <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>BTC Overlay</span>
           </button>
+        </div>
+      </div>
+
+      {/* Live Feed Section */}
+      <div className="bg-slate-900 rounded-lg p-3 mb-4">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-white text-sm font-medium">Live Feed</h3>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+            <span className="text-green-500 text-xs">Live</span>
+          </div>
+        </div>
+        <div className="space-y-3">
+          {liveFeedData.map((event) => (
+            <div key={event.id} className="flex items-start gap-3">
+              <div className="flex flex-col items-center">
+                <div className={`${event.color}`}>{event.icon}</div>
+                <div className="w-0.5 h-full bg-gray-700"></div>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-400 text-xs">{event.time}</span>
+                    <span className={`text-xs font-medium ${event.color}`}>
+                      {event.type.toUpperCase()}
+                    </span>
+                  </div>
+                  <span className="text-gray-300 text-xs">{event.pair}</span>
+                </div>
+                <div className="flex items-center justify-between mt-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-white text-sm">${event.price}</span>
+                    <span className="text-gray-400 text-xs">
+                      {event.amount}
+                    </span>
+                  </div>
+                  <span className={`text-sm font-medium ${event.color}`}>
+                    {event.value}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

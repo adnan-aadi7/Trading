@@ -1,8 +1,12 @@
 body {
-  background: linear-gradient(
-    to bottom right,
-    #151b27,
-    #010c2f,
-    #050252
-  );
+  background-color: #201f1f;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: white;
+}
+
+/* Ensure the app container takes full height */
+#root {
+  min-height: 100vh;
 }

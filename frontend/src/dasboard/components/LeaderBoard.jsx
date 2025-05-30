@@ -102,6 +102,8 @@ const Leaderboard = () => {
       const totalTrades = Math.floor(Math.random() * 100) + 10;
       const liquidations = Math.floor(Math.random() * 5);
       const winRate = 60 + Math.random() * 35;
+      const riskRatio = (Math.random() * 3 + 1).toFixed(2);
+      const sharpeRatio = (Math.random() * 2 + 0.5).toFixed(2);
 
       return {
         id: index + 1,
@@ -123,14 +125,10 @@ const Leaderboard = () => {
         minConfigPnl: `+$${Math.floor(basePnl * 0.05).toLocaleString()}`,
         liquidationCount: liquidations,
         winRate: `${winRate.toFixed(1)}%`,
-        g24hPNL: `${Math.random() > 0.6 ? "+" : "-"}$${Math.floor(
-          Math.random() * 50000 + 1000
-        ).toLocaleString()}`,
-        g24hConfigPNL: `${Math.random() > 0.6 ? "+" : "-"}$${Math.floor(
-          Math.random() * 45000 + 800
-        ).toLocaleString()}`,
-        g24hTradesOpen: Math.floor(Math.random() * 20),
-        g24hTradesClosed: Math.floor(Math.random() * 15 + 5),
+        avgDU: `${(Math.random() * 20 + 10).toFixed(1)}%`,
+        maxDU: `${(Math.random() * 40 + 20).toFixed(1)}%`,
+        riskRatio: riskRatio,
+        sharpeRatio: sharpeRatio,
       };
     });
   };
@@ -155,7 +153,7 @@ const Leaderboard = () => {
         key="prev"
         onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
         disabled={currentPage === 1}
-        className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-500 text-white rounded-lg transition-colors text-sm"
+        className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 disabled:text-slate-500 text-white rounded-lg transition-colors text-sm"
       >
         <ChevronLeft size={16} />
         <span className="hidden sm:inline">Prev</span>
@@ -226,7 +224,7 @@ const Leaderboard = () => {
         key="next"
         onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
         disabled={currentPage === totalPages}
-        className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-500 text-white rounded-lg transition-colors text-sm"
+        className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 disabled:text-slate-500 text-white rounded-lg transition-colors text-sm"
       >
         <span className="hidden sm:inline">Next</span>
         <ChevronRight size={16} />
@@ -245,11 +243,11 @@ const Leaderboard = () => {
             Trader Performance Leaderboard
           </h1>
           <div className="flex gap-2 sm:gap-3">
-            <button className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
+            <button className="flex items-center gap-1.5 sm:gap-2  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
               <Filter size={14} className="sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Filters</span>
             </button>
-            <button className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
+            <button className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-br  from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
               <Download size={14} className="sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Export</span>
             </button>
@@ -257,11 +255,11 @@ const Leaderboard = () => {
         </div>
 
         {/* Table Container */}
-        <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900">
+        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 rounded-xl border border-slate-700 overflow-hidden  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900">
           <div className="overflow-x-auto">
             <div className="min-w-[1200px]">
               {/* Table Header */}
-              <div className="grid grid-cols-16 gap-1 px-2 sm:px-3 py-2 sm:py-3 bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border-b border-slate-700 text-xs">
+              <div className="grid grid-cols-18 gap-1 px-2 sm:px-3 py-2 sm:py-3  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border-b border-slate-700 text-xs">
                 <div className="text-slate-400 font-medium col-span-2 text-xs sm:text-sm">
                   Trader
                 </div>
@@ -302,10 +300,16 @@ const Leaderboard = () => {
                   Win Rate
                 </div>
                 <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
-                  24h PNL
+                  Avg DU
                 </div>
                 <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
-                  24h Config
+                  Max DU
+                </div>
+                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                  Risk Ratio
+                </div>
+                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                  Sharpe
                 </div>
               </div>
 
@@ -313,7 +317,7 @@ const Leaderboard = () => {
               {currentTraders.map((trader, index) => (
                 <div
                   key={trader.id}
-                  className={`grid grid-cols-16 gap-1 px-2 sm:px-3 py-2 sm:py-3 hover:bg-slate-750 transition-colors text-xs ${
+                  className={`grid grid-cols-18 gap-1 px-2 sm:px-3 py-2 sm:py-3 hover:bg-slate-750 transition-colors text-xs ${
                     index !== currentTraders.length - 1
                       ? "border-b border-slate-700"
                       : ""
@@ -426,30 +430,42 @@ const Leaderboard = () => {
                     </span>
                   </div>
 
-                  {/* 24h PNL */}
+                  {/* Avg DU */}
                   <div className="flex items-center justify-center">
-                    <span
-                      className={`font-medium whitespace-nowrap ${
-                        trader.g24hPNL.startsWith("+")
-                          ? "text-green-400"
-                          : "text-red-400"
-                      } text-xs sm:text-sm`}
-                    >
-                      {trader.g24hPNL}
+                    <span className="text-yellow-400 font-medium whitespace-nowrap text-xs sm:text-sm">
+                      {trader.avgDU}
                     </span>
                   </div>
 
-                  {/* 24h Config PNL */}
+                  {/* Max DU */}
                   <div className="flex items-center justify-center">
-                    <span
-                      className={`font-medium whitespace-nowrap ${
-                        trader.g24hConfigPNL.startsWith("+")
-                          ? "text-green-400"
-                          : "text-red-400"
-                      } text-xs sm:text-sm`}
-                    >
-                      {trader.g24hConfigPNL}
+                    <span className="text-yellow-400 font-medium whitespace-nowrap text-xs sm:text-sm">
+                      {trader.maxDU}
                     </span>
+                  </div>
+
+                  {/* Risk Ratio */}
+                  <div className="flex items-center justify-center">
+                    <span className="text-purple-400 font-medium whitespace-nowrap text-xs sm:text-sm">
+                      {trader.riskRatio}
+                    </span>
+                  </div>
+
+                  {/* Sharpe Ratio */}
+                  <div className="flex items-center justify-center">
+                    <div className="w-full max-w-[80px]">
+                      <div className="relative h-2 bg-slate-700 rounded-full overflow-hidden">
+                        <div
+                          className="absolute top-0 left-0 h-full bg-gradient-to-r from-green-500 to-blue-500"
+                          style={{
+                            width: `${(trader.sharpeRatio / 2.5) * 100}%`,
+                          }}
+                        />
+                      </div>
+                      <span className="text-emerald-400 font-medium whitespace-nowrap text-xs sm:text-sm mt-0.5 block text-center">
+                        {trader.sharpeRatio}
+                      </span>
+                    </div>
                   </div>
                 </div>
               ))}

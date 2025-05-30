@@ -1,7 +1,13 @@
 import React from "react";
-import { Star, Copy, User } from "lucide-react";
+import { Star, Copy, User, Pencil } from "lucide-react";
 
 function TraderProfile() {
+  // Placeholder for edit functionality (optional)
+  const handleEditClick = () => {
+    console.log("Edit icon clicked");
+    // Implement edit functionality here (e.g., open a modal to edit profile name)
+  };
+
   return (
     <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 w-full px-4 sm:px-14">
       {/* Header Section */}
@@ -11,8 +17,13 @@ function TraderProfile() {
             <User className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
           </div>
           <div>
-            <h1 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold">
+            <h1 className="text-white text-xl sm:text-xl lg:text-2xl font-bold flex items-center gap-3">
               Trader Profile: CryptoWhale7843
+              <Pencil
+                size={20}
+                className="text-gray-400 hover:text-white cursor-pointer transition-colors"
+                onClick={handleEditClick}
+              />
             </h1>
             <p className="text-gray-400 text-base sm:text-lg">
               UID: 0x7a3b...f921 · Active since May 12, 2022

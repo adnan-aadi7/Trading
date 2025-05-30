@@ -9,6 +9,7 @@ import StreakTraders from "../components/Streaktraders";
 import Leaderboard from "../components/LeaderBoard";
 import NavbarUpdated from "../../common/NavbarUpdated";
 import Footer from "../../common/Footer";
+import BtcIndex from "../components/BtcIndex";
 
 const Dashboard = () => {
   return (
@@ -34,6 +35,7 @@ const Dashboard = () => {
         <div className="w-full flex flex-col gap-4 md:gap-6 lg:w-1/3">
           <ActiveTraders />
           <LiveFeed />
+          <BtcIndex />
         </div>
       </div>
 
@@ -41,6 +43,7 @@ const Dashboard = () => {
       <div className="w-full">
         <Leaderboard />
       </div>
+
       <Footer />
     </>
   );

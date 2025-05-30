@@ -3,7 +3,7 @@ import { User, ChevronLeft, ChevronRight } from "lucide-react";
 
 const Heading = () => {
   return (
-    <div className="mt-24 px-3 sm:px-4 md:px-6 lg:px-[100px] py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
+    <div className="px-3 sm:px-4 md:px-6 lg:px-[100px] py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
       {/* Left side - Title and WIN badge */}
       <div className="flex items-center space-x-3">
         <h1 className="text-white text-xl sm:text-2xl font-semibold">

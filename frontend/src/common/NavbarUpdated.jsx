@@ -1,21 +1,49 @@
 import React, { useState } from "react";
-import { Search, SlidersHorizontal, Clock, ChevronDown } from "lucide-react";
+import {
+  Search,
+  SlidersHorizontal,
+  Clock,
+  ChevronDown,
+  Calendar,
+} from "lucide-react";
 import logo from "../assets/images/updatedlogo.svg"; // Adjust the path as necessary
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const NavbarUpdated = () => {
   const [searchValue, setSearchValue] = useState("");
   const [isTimeDropdownOpen, setIsTimeDropdownOpen] = useState(false);
   const [selectedTime, setSelectedTime] = useState("24H");
+  const [isCustomDateOpen, setIsCustomDateOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const timeOptions = ["1H", "4H", "12H", "24H", "7D", "30D"];
+  const timeOptions = ["1H", "4H", "12H", "24H", "7D", "30D", "Custom"];
 
   const handleTimeSelect = (time) => {
-    setSelectedTime(time);
+    if (time === "Custom") {
+      setIsCustomDateOpen(true);
+    } else {
+      setSelectedTime(time);
+      setIsTimeDropdownOpen(false);
+    }
+  };
+
+  const handleCustomDateSelect = () => {
+    // Format the single selected date for display
+    const formatDate = (date) => {
+      return date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+    };
+    setSelectedTime(formatDate(selectedDate)); // Display the single date
+    setIsCustomDateOpen(false);
     setIsTimeDropdownOpen(false);
   };
 
   return (
-    <nav className="sticky top-0 z-50  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border-b border-slate-700 px-4 sm:px-14 md:px-6 lg:px-13 py-5 ">
+    <nav className="sticky top-0 z-50  bg-gray-900 border-b border-slate-700 px-4 sm:px-14 md:px-6 lg:px-13 py-5 ">
       <div className="flex items-center justify-between gap-2">
         {/* Logo */}
         <div className="flex items-center gap-1 sm:gap-2">
@@ -38,7 +66,7 @@ const NavbarUpdated = () => {
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Search for traders..."
-              className="w-full bg-slate-800 border border-slate-600 rounded-lg pl-8 sm:pl-10 pr-2 sm:pr-3 py-1.5 sm:py-2 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border border-slate-600 rounded-lg pl-8 sm:pl-10 pr-2 sm:pr-3 py-1.5 sm:py-2 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
         </div>
@@ -46,7 +74,7 @@ const NavbarUpdated = () => {
         {/* Right Side Actions */}
         <div className="flex items-center gap-2">
           {/* Config Button */}
-          <button className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-white transition-colors">
+          <button className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-700 border border-slate-600 rounded-lg text-white transition-colors">
             <SlidersHorizontal size={16} />
             <span className="text-xs sm:text-sm font-medium">Config</span>
           </button>
@@ -55,7 +83,7 @@ const NavbarUpdated = () => {
           <div className="relative">
             <button
               onClick={() => setIsTimeDropdownOpen(!isTimeDropdownOpen)}
-              className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-white transition-colors"
+              className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-700 border border-slate-600 rounded-lg text-white transition-colors"
             >
               <Clock size={16} />
               <span className="text-xs sm:text-sm font-medium">
@@ -70,7 +98,7 @@ const NavbarUpdated = () => {
             </button>
 
             {isTimeDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-24 bg-slate-800 border border-slate-600 rounded-lg shadow-lg z-50">
+              <div className="absolute right-0 mt-2 w-24 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border border-slate-600 rounded-lg shadow-lg z-50">
                 {timeOptions.map((time) => (
                   <button
                     key={time}
@@ -82,6 +110,51 @@ const NavbarUpdated = () => {
                     {time}
                   </button>
                 ))}
+              </div>
+            )}
+
+            {isCustomDateOpen && (
+              <div className="absolute right-0 mt-2 p-4 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border border-slate-600 rounded-lg shadow-lg z-50 w-[300px]">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-medium text-white">
+                      Select Date
+                    </h3>
+                    <button
+                      onClick={() => setIsCustomDateOpen(false)}
+                      className="text-gray-400 hover:text-white"
+                    >
+                      ×
+                    </button>
+                  </div>
+                  <div>
+                    <label className="block text-xs text-gray-400 mb-1">
+                      Select Date
+                    </label>
+                    <DatePicker
+                      selected={selectedDate}
+                      onChange={(date) => setSelectedDate(date)}
+                      className="w-full bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      dateFormat="MMM d, yyyy"
+                      calendarClassName="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border border-slate-600"
+                      popperClassName="react-datepicker-popper"
+                    />
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setIsCustomDateOpen(false)}
+                      className="flex-1 px-3 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded text-sm transition-colors"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={handleCustomDateSelect}
+                      className="flex-1 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm transition-colors"
+                    >
+                      Apply
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </div>

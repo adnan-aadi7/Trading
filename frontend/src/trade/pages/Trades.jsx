@@ -16,10 +16,10 @@ const Trades = () => {
       <NavbarUpdated />
       {/* <SubNavbar /> SubNavbar added here */}
       <Heading />
-      {/* Two-column layout container */}
-      <div className="flex flex-col lg:flex-row p-3 sm:p-4 md:p-6 lg:px-[50px] xl:px-[100px] gap-4 md:gap-6 lg:gap-12">
+      {/* Two-column layout container with full width */}
+      <div className="flex flex-col lg:flex-row py-2 sm:py-3 md:py-4 px-2 sm:px-4 md:px-8 lg:px-12 gap-4 md:gap-6 lg:gap-3 w-full">
         {/* Left Column */}
-        <div className="flex flex-col gap-4 w-full lg:w-1/3 xl:w-1/4">
+        <div className="flex flex-col gap-4 w-full lg:w-1/4">
           {" "}
           {/* Adjusted width classes */}
           <TradeSummary />
@@ -27,7 +27,7 @@ const Trades = () => {
           <RiskMetrics />
         </div>
         {/* Right Column */}
-        <div className="flex flex-col gap-4 md:gap-6 lg:gap-12 flex-grow">
+        <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 flex-grow">
           {" "}
           {/* Use flex-grow to fill remaining space */}
           <PriceActionChart />

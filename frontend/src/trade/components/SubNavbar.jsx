@@ -6,7 +6,7 @@ const SubNavbar = () => {
   const pathnames = location.pathname.split("/").filter((x) => x);
 
   return (
-    <nav className="bg-slate-800 text-gray-300 px-4 py-3 text-sm">
+    <nav className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 text-gray-300 px-4 py-3 text-sm">
       <ol className="list-none p-0 inline-flex">
         <li className="flex items-center">
           <Link to="/" className="text-blue-400 hover:text-blue-200">
