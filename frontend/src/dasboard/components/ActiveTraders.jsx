@@ -46,7 +46,7 @@ const ActiveTraders = () => {
 
   return (
     <div className="w-full mt-6">
-      <div className="w-full rounded-lg p-6 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900">
+      <div className="w-full rounded-lg p-6 bg-gray-800">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-white text-xl font-semibold">

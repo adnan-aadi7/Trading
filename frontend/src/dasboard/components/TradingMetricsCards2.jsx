@@ -50,7 +50,7 @@ const TradingMetricsCards2 = () => {
         {cardData.map((card, index) => (
           <div
             key={index}
-            className="bg-gray-800 rounded-lg p-3 sm:p-4 w-full bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900"
+            className=" rounded-lg p-3 sm:p-4 w-full bg-gradient-to-br bg-gray-800"
           >
             <div className="flex items-center justify-between mb-2 sm:mb-3">
               <h3 className="text-gray-400 text-xs sm:text-sm font-medium truncate">

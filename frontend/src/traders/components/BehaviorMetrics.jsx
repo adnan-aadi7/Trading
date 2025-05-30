@@ -65,7 +65,7 @@ function BehaviorMetrics() {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 w-full px-4 sm:px-14">
+    <div className=" p-4 sm:p-6 w-full px-4 sm:px-14">
       {/* Header */}
       <h2 className="text-white text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">
         Behavior Metrics
@@ -76,7 +76,7 @@ function BehaviorMetrics() {
         {metricsData.map((metric, index) => (
           <div
             key={index}
-            className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg border border-gray-700"
+            className="bg-gray-800 p-4 sm:p-6 rounded-lg border border-gray-700"
           >
             {/* Metric Title */}
             <h3 className="text-gray-400 text-xs sm:text-sm font-medium mb-2 sm:mb-4 line-clamp-2">

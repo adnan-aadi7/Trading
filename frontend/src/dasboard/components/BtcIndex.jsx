@@ -78,7 +78,7 @@ const BtcIndex = () => {
       const changeColor = change24h >= 0 ? "text-green-400" : "text-red-400";
 
       return (
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border border-slate-600 rounded-lg p-3 shadow-xl max-w-3xl">
+        <div className="bg-gray-800 border border-slate-600 rounded-lg p-3 shadow-xl max-w-3xl">
           <div className="text-blue-400 font-semibold mb-2">{label}</div>
           <div className="flex justify-between items-center">
             <span className="text-gray-300 text-sm">BTC Price:</span>
@@ -99,7 +99,7 @@ const BtcIndex = () => {
   const PositionTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border border-slate-600 rounded-lg p-3 shadow-xl">
+        <div className="bg-gray-800 border border-slate-600 rounded-lg p-3 shadow-xl">
           <div className="text-blue-400 font-semibold mb-2">{label}</div>
           <div className="space-y-1">
             <div className="flex justify-between items-center">
@@ -128,7 +128,7 @@ const BtcIndex = () => {
   };
 
   return (
-    <div className=" max-w-3xl mt-16 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 rounded-xl border border-slate-700 p-4 mb-6">
+    <div className=" max-w-3xl mt-16 bg-gray-800 rounded-xl border border-slate-700 p-4 mb-6">
       {/* BTC Price Chart */}
       <div className="mb-6 pb-6 border-b border-slate-700">
         <div className="flex items-center justify-between mb-4">

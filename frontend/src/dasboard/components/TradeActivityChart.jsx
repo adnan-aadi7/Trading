@@ -164,13 +164,13 @@ const TradeActivityChart = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 text-white p-3 sm:p-4 md:p-6 rounded-lg mt-6">
+    <div className="bg-gray-800 text-white p-3 sm:p-4 md:p-6 rounded-lg mt-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0 mb-4 sm:mb-6">
         <h2 className="text-lg sm:text-xl font-semibold text-white">
           Recent Trade Activity
         </h2>
-        <div className="flex bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 rounded-lg p-1 w-full sm:w-auto">
+        <div className="flex bg-gray-800 rounded-lg p-1 w-full sm:w-auto">
           {timeframes.map((timeframe) => (
             <button
               key={timeframe.value}
@@ -255,28 +255,28 @@ const TradeActivityChart = () => {
 
       {/* Activity Summary */}
       <div className="mt-4 sm:mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-2 sm:p-3 rounded-lg">
+        <div className="bg-gray-800 p-2 sm:p-3 rounded-lg">
           <div className="text-gray-400 text-xs uppercase tracking-wide mb-1">
             Peak Activity
           </div>
           <div className="text-white text-base sm:text-lg font-bold">20:00</div>
           <div className="text-blue-400 text-xs sm:text-sm">$11.2K</div>
         </div>
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-2 sm:p-3 rounded-lg">
+        <div className="bg-gray-800 p-2 sm:p-3 rounded-lg">
           <div className="text-gray-400 text-xs uppercase tracking-wide mb-1">
             Total Trades
           </div>
           <div className="text-white text-base sm:text-lg font-bold">195</div>
           <div className="text-green-400 text-xs sm:text-sm">+12% vs avg</div>
         </div>
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-2 sm:p-3 rounded-lg">
+        <div className="bg-gray-800 p-2 sm:p-3 rounded-lg">
           <div className="text-gray-400 text-xs uppercase tracking-wide mb-1">
             Avg Trade Size
           </div>
           <div className="text-white text-base sm:text-lg font-bold">$392</div>
           <div className="text-yellow-400 text-xs sm:text-sm">-3% vs avg</div>
         </div>
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-2 sm:p-3 rounded-lg">
+        <div className="bg-gray-800 p-2 sm:p-3 rounded-lg">
           <div className="text-gray-400 text-xs uppercase tracking-wide mb-1">
             Success Rate
           </div>

@@ -9,7 +9,7 @@ function TraderProfile() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 w-full px-4 sm:px-14">
+    <div className=" p-4 sm:p-6 w-full px-4 sm:px-14">
       {/* Header Section */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0 mb-6 sm:mb-8">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
@@ -45,7 +45,7 @@ function TraderProfile() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-4">
         {/* Virtual Wallet */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <h3 className="text-gray-400 text-sm font-medium mb-2">
             Virtual Wallet
           </h3>
@@ -58,7 +58,7 @@ function TraderProfile() {
         </div>
 
         {/* Risk-Reward Ratio */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <h3 className="text-gray-400 text-sm font-medium mb-2">
             Risk-Reward Ratio
           </h3>
@@ -69,7 +69,7 @@ function TraderProfile() {
         </div>
 
         {/* Total Trades */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <h3 className="text-gray-400 text-sm font-medium mb-2">
             Total Trades
           </h3>
@@ -82,7 +82,7 @@ function TraderProfile() {
         </div>
 
         {/* Last Activity */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <h3 className="text-gray-400 text-sm font-medium mb-2">
             Last Activity
           </h3>
@@ -93,7 +93,7 @@ function TraderProfile() {
         </div>
 
         {/* Total ROI */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <h3 className="text-gray-400 text-sm font-medium mb-2">Total ROI</h3>
           <div className="text-green-400 text-2xl sm:text-3xl font-bold mb-1">
             +247.83%
@@ -102,7 +102,7 @@ function TraderProfile() {
         </div>
 
         {/* Absolute PNL */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <h3 className="text-gray-400 text-sm font-medium mb-2">
             Absolute PNL
           </h3>
@@ -113,7 +113,7 @@ function TraderProfile() {
         </div>
 
         {/* Liquidation Count */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <h3 className="text-gray-400 text-sm font-medium mb-2">
             Liquidation Count
           </h3>
@@ -126,7 +126,7 @@ function TraderProfile() {
         </div>
 
         {/* Average PNL */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <h3 className="text-gray-400 text-sm font-medium mb-2">
             Average PNL
           </h3>
@@ -137,7 +137,7 @@ function TraderProfile() {
         </div>
 
         {/* Config PNL */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <h3 className="text-gray-400 text-sm font-medium mb-2">Config PNL</h3>
           <div className="text-green-400 text-2xl sm:text-3xl font-bold mb-1">
             +$6,195.64
@@ -148,7 +148,7 @@ function TraderProfile() {
         </div>
 
         {/* Avg Absolute PNL */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <h3 className="text-gray-400 text-sm font-medium mb-2">
             Avg Absolute PNL
           </h3>
@@ -159,7 +159,7 @@ function TraderProfile() {
         </div>
 
         {/* Min Config PNL */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <h3 className="text-gray-400 text-sm font-medium mb-2">
             Min Config PNL
           </h3>
@@ -170,7 +170,7 @@ function TraderProfile() {
         </div>
 
         {/* Win Rate */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <h3 className="text-gray-400 text-sm font-medium mb-2">Win Rate</h3>
           <div className="text-white text-2xl sm:text-3xl font-bold mb-1">
             68.4%

@@ -40,7 +40,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border-b border-slate-700 px-4 sm:px-14 md:px-6 lg:px-13 py-5 ">
+    <nav className="sticky top-0 z-50  bg-gray-800 border-b border-slate-700 px-4 sm:px-14 md:px-6 lg:px-13 py-5 ">
       <div className="flex items-center justify-between gap-2">
         {/* Logo */}
         <div className="flex items-center gap-1 sm:gap-2">
@@ -63,7 +63,7 @@ const Navbar = () => {
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Search for traders..."
-              className="w-full bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border border-slate-600 rounded-lg pl-8 sm:pl-10 pr-2 sm:pr-3 py-1.5 sm:py-2 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gray-800 border border-slate-600 rounded-lg pl-8 sm:pl-10 pr-2 sm:pr-3 py-1.5 sm:py-2 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
         </div>
@@ -73,7 +73,7 @@ const Navbar = () => {
           {/* Config Button - Toggles the config modal */}
           <button
             onClick={() => setIsConfigOpen(true)} // Open the Popup
-            className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-700 border border-slate-600 rounded-lg text-white transition-colors"
+            className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-gray-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-white transition-colors"
           >
             <SlidersHorizontal size={16} />
             <span className="text-xs sm:text-sm font-medium">Config</span>
@@ -83,7 +83,7 @@ const Navbar = () => {
           <div className="relative">
             <button
               onClick={() => setIsTimeDropdownOpen(!isTimeDropdownOpen)}
-              className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-700 border border-slate-600 rounded-lg text-white transition-colors"
+              className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-gray-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-white transition-colors"
             >
               <Clock size={16} />
               <span className="text-xs sm:text-sm font-medium">
@@ -98,7 +98,7 @@ const Navbar = () => {
             </button>
 
             {isTimeDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-24 bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border border-slate-600 rounded-lg shadow-lg z-50">
+              <div className="absolute right-0 mt-2 w-24 bg-gray-800 border border-slate-600 rounded-lg shadow-lg z-50">
                 {timeOptions.map((time) => (
                   <button
                     key={time}

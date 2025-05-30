@@ -6,6 +6,7 @@ import {
   YAxis,
   ResponsiveContainer,
   CartesianGrid,
+  Tooltip,
 } from "recharts";
 
 function PerformanceComparison() {
@@ -70,9 +71,36 @@ function PerformanceComparison() {
     },
   ];
 
+  // Custom Tooltip component
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-gray-800 border border-gray-700 rounded-lg p-3 shadow-lg text-sm text-white">
+          <p className="font-semibold mb-2">{label}</p>
+          {payload.map((entry, index) => (
+            <p key={`tooltip-${index}`} className="flex items-center gap-2">
+              <span style={{ color: entry.stroke }}>●</span>
+              {entry.dataKey === "traderPNL" && "Trader PNL:"}
+              {entry.dataKey === "globalAvgPNL" && "Global Avg PNL:"}
+              {entry.dataKey === "traderConfigPNL" && "Trader Config PNL:"}
+              {entry.dataKey === "globalConfigPNL" && "Global Config PNL:"}
+              {entry.dataKey === "btcFluctuation" && "BTC Fluctuation:"}
+              {entry.dataKey === "traderPNL" ||
+              entry.dataKey === "globalAvgPNL" ||
+              entry.dataKey === "btcFluctuation"
+                ? `${entry.value}%`
+                : `$${entry.value}`}
+            </p>
+          ))}
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <div
-      className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg w-full max-w-[1400px] mx-auto overflow-x-auto"
+      className=" p-4 sm:p-6 rounded-lg w-full max-w-[1400px] mx-auto overflow-x-auto"
       style={{ backgroundColor: "#2B3544" }}
     >
       {/* Header */}
@@ -155,6 +183,7 @@ function PerformanceComparison() {
                   tickFormatter={(value) => `${value}%`}
                   width={35}
                 />
+                <Tooltip content={<CustomTooltip />} />
                 <Line
                   type="monotone"
                   dataKey="traderPNL"
@@ -239,6 +268,7 @@ function PerformanceComparison() {
                   tickFormatter={(value) => `$${value}`}
                   width={35}
                 />
+                <Tooltip content={<CustomTooltip />} />
                 <Line
                   type="monotone"
                   dataKey="traderConfigPNL"

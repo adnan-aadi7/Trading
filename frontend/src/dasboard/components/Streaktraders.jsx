@@ -124,7 +124,7 @@ const StreakTraders = () => {
             Top 10 Hot Streak Traders
           </h1>
           <div className="relative w-full sm:w-auto">
-            <select className=" bg-gray-800 w-full sm:w-auto  bg-gradient-to-br text-white px-3 sm:px-4 py-2 pr-10 rounded-lg border border-slate-700 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+            <select className=" bg-gray-800 w-full sm:w-auto text-white px-3 sm:px-4 py-2 pr-10 rounded-lg border border-slate-700 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
               <option>Sort by PNL</option>
               <option>Sort by Win Rate</option>
               <option>Sort by Win Streak</option>
@@ -137,9 +137,9 @@ const StreakTraders = () => {
         </div>
 
         {/* Table */}
-        <div className=" rounded-xl border bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 overflow-hidden">
+        <div className=" rounded-xl bg-gray-800 overflow-hidden">
           {/* Table Header */}
-          <div className="grid grid-cols-5 gap-2 sm:gap-4 px-3 sm:px-6 py-3 sm:py-4  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border-b border-slate-700">
+          <div className="grid grid-cols-5 gap-2 sm:gap-4 px-3 sm:px-6 py-3 sm:py-4">
             <div className="text-slate-400 text-xs sm:text-sm font-medium">
               Trader
             </div>

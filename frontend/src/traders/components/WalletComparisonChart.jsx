@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   ResponsiveContainer,
   Legend,
+  Tooltip,
 } from "recharts";
 import { ChevronDown } from "lucide-react";
 
@@ -43,8 +44,8 @@ const WalletComparisonChart = () => {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-gray-800 border border-gray-600 rounded-lg p-2 sm:p-3 shadow-lg">
-          <p className="text-gray-300 text-xs sm:text-sm mb-1 sm:mb-2">
+        <div className="bg-gray-800 border border-gray-600 rounded-lg p-2 sm:p-3 shadow-lg text-gray-300">
+          <p className="text-white text-xs sm:text-sm mb-1 sm:mb-2 font-semibold">
             {label}
           </p>
           {payload.map((entry, index) => (
@@ -63,7 +64,7 @@ const WalletComparisonChart = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 text-white p-4 sm:p-6 rounded-lg w-full max-w-[1400px] mx-auto mt-6 sm:mt-10 overflow-x-auto">
+    <div className="bg-gray-800 text-white p-4 sm:p-6 rounded-lg w-full max-w-[1400px] mx-auto mt-6 sm:mt-10 overflow-x-auto">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6 sm:mb-8">
         <h2 className="text-xl sm:text-2xl font-semibold text-white">
@@ -74,7 +75,7 @@ const WalletComparisonChart = () => {
           <div className="relative w-full sm:w-auto">
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="w-full sm:w-auto bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 text-white px-3 sm:px-4 py-2 rounded-md flex items-center justify-between sm:justify-start gap-2 hover:bg-gray-700 transition-colors border border-gray-700 text-sm"
+              className="w-full sm:w-auto bg-gray-800 text-white px-3 sm:px-4 py-2 rounded-md flex items-center justify-between sm:justify-start gap-2 hover:bg-gray-700 transition-colors border border-gray-700 text-sm"
             >
               <span className="truncate">{compareWith}</span>
               <ChevronDown className="w-4 h-4 flex-shrink-0" />
@@ -122,7 +123,7 @@ const WalletComparisonChart = () => {
       </div>
 
       {/* Chart */}
-      <div className="h-64 sm:h-80 md:h-96 w-full min-w-[300px]">
+      <div className="h-56 sm:h-72 md:h-80 w-full min-w-[300px]">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
@@ -147,7 +148,7 @@ const WalletComparisonChart = () => {
               domain={["dataMin - 1000", "dataMax + 1000"]}
               width={35}
             />
-            <CustomTooltip />
+            <Tooltip content={<CustomTooltip />} isAnimationActive={false} />
 
             {/* CryptoWhale7843 - Solid green line */}
             <Line
@@ -186,7 +187,7 @@ const WalletComparisonChart = () => {
 
       {/* Performance Summary */}
       <div className="mt-4 sm:mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-3 sm:p-4 rounded-lg">
+        <div className="bg-gray-800 p-3 sm:p-4 rounded-lg">
           <div className="text-emerald-500 text-xs sm:text-sm font-medium">
             CryptoWhale7843
           </div>
@@ -195,7 +196,7 @@ const WalletComparisonChart = () => {
           </div>
           <div className="text-emerald-400 text-xs sm:text-sm">+252%</div>
         </div>
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-3 sm:p-4 rounded-lg">
+        <div className="bg-gray-800 p-3 sm:p-4 rounded-lg">
           <div className="text-blue-400 text-xs sm:text-sm font-medium">
             Top 10 Traders Avg
           </div>
@@ -204,7 +205,7 @@ const WalletComparisonChart = () => {
           </div>
           <div className="text-blue-400 text-xs sm:text-sm">+165%</div>
         </div>
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-3 sm:p-4 rounded-lg">
+        <div className="bg-gray-800 p-3 sm:p-4 rounded-lg">
           <div className="text-yellow-500 text-xs sm:text-sm font-medium">
             BTC Price
           </div>

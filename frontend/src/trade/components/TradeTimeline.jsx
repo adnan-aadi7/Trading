@@ -118,7 +118,7 @@ const TradeTimeline = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 rounded-lg p-3 sm:p-4 md:p-6">
+    <div className=" bg-gray-800 rounded-lg p-3 sm:p-4 md:p-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 mb-4 sm:mb-6">
         <h2 className="text-white text-lg sm:text-xl font-semibold">
@@ -150,53 +150,9 @@ const TradeTimeline = () => {
           </button>
         </div>
       </div>
-
-      {/* Live Feed Section */}
-      <div className="bg-slate-900 rounded-lg p-3 mb-4">
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="text-white text-sm font-medium">Live Feed</h3>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-            <span className="text-green-500 text-xs">Live</span>
-          </div>
-        </div>
-        <div className="space-y-3">
-          {liveFeedData.map((event) => (
-            <div key={event.id} className="flex items-start gap-3">
-              <div className="flex flex-col items-center">
-                <div className={`${event.color}`}>{event.icon}</div>
-                <div className="w-0.5 h-full bg-gray-700"></div>
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-gray-400 text-xs">{event.time}</span>
-                    <span className={`text-xs font-medium ${event.color}`}>
-                      {event.type.toUpperCase()}
-                    </span>
-                  </div>
-                  <span className="text-gray-300 text-xs">{event.pair}</span>
-                </div>
-                <div className="flex items-center justify-between mt-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-white text-sm">${event.price}</span>
-                    <span className="text-gray-400 text-xs">
-                      {event.amount}
-                    </span>
-                  </div>
-                  <span className={`text-sm font-medium ${event.color}`}>
-                    {event.value}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Chart Container */}
-      <div className="bg-slate-900 rounded-lg p-2 sm:p-4 mb-4 sm:mb-6">
-        <div className="h-80 w-full">
+      <div className="bg-slate-800 rounded-lg p-2 sm:p-4 mb-4 sm:mb-6">
+        <div className="h-60 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={tradeData}
@@ -240,9 +196,50 @@ const TradeTimeline = () => {
           </ResponsiveContainer>
         </div>
       </div>
-
+      {/* Live Feed Section */}
+      <div className="bg-slate-800 rounded-lg p-3 mb-4">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-white text-sm font-medium">Live Feed</h3>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+            <span className="text-green-500 text-xs">Live</span>
+          </div>
+        </div>
+        <div className="space-y-3">
+          {liveFeedData.map((event) => (
+            <div key={event.id} className="flex items-start gap-3">
+              <div className="flex flex-col items-center">
+                <div className={`${event.color}`}>{event.icon}</div>
+                <div className="w-0.5 h-full bg-gray-700"></div>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-400 text-xs">{event.time}</span>
+                    <span className={`text-xs font-medium ${event.color}`}>
+                      {event.type.toUpperCase()}
+                    </span>
+                  </div>
+                  <span className="text-gray-300 text-xs">{event.pair}</span>
+                </div>
+                <div className="flex items-center justify-between mt-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-white text-sm">${event.price}</span>
+                    <span className="text-gray-400 text-xs">
+                      {event.amount}
+                    </span>
+                  </div>
+                  <span className={`text-sm font-medium ${event.color}`}>
+                    {event.value}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
       {/* Legend */}
-      <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
+      {/* <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
         <div className="flex items-center space-x-2">
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
           <span className="text-gray-300 text-xs sm:text-sm">Entry Point</span>
@@ -263,7 +260,7 @@ const TradeTimeline = () => {
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
           <span className="text-gray-300 text-xs sm:text-sm">Exit Point</span>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

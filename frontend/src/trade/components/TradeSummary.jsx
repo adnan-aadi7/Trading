@@ -2,7 +2,7 @@ import React from "react";
 
 const TradeSummary = () => {
   return (
-    <div className="bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 rounded-lg p-3 sm:p-4 md:p-6 w-full sm:w-80 border border-slate-700">
+    <div className=" bg-gray-800 rounded-lg p-3 sm:p-4 md:p-6 w-full sm:w-80 border border-slate-700">
       {/* Header */}
       <div className="flex items-center justify-between mb-4 sm:mb-6">
         <h2 className="text-white text-lg sm:text-xl font-semibold">

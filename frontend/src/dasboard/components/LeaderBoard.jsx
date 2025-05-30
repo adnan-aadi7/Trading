@@ -153,7 +153,7 @@ const Leaderboard = () => {
         key="prev"
         onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
         disabled={currentPage === 1}
-        className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 disabled:text-slate-500 text-white rounded-lg transition-colors text-sm"
+        className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-gray-800 disabled:text-slate-500 text-white rounded-lg transition-colors text-sm"
       >
         <ChevronLeft size={16} />
         <span className="hidden sm:inline">Prev</span>
@@ -224,7 +224,7 @@ const Leaderboard = () => {
         key="next"
         onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
         disabled={currentPage === totalPages}
-        className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 disabled:text-slate-500 text-white rounded-lg transition-colors text-sm"
+        className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-gray-800 disabled:text-slate-500 text-white rounded-lg transition-colors text-sm"
       >
         <span className="hidden sm:inline">Next</span>
         <ChevronRight size={16} />
@@ -243,7 +243,7 @@ const Leaderboard = () => {
             Trader Performance Leaderboard
           </h1>
           <div className="flex gap-2 sm:gap-3">
-            <button className="flex items-center gap-1.5 sm:gap-2  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
+            <button className="flex items-center gap-1.5 sm:gap-2  bg-gray-800 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
               <Filter size={14} className="sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Filters</span>
             </button>
@@ -255,11 +255,11 @@ const Leaderboard = () => {
         </div>
 
         {/* Table Container */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 rounded-xl border border-slate-700 overflow-hidden  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900">
+        <div className="bg-gray-800 rounded-xl border border-slate-700 overflow-hidden ">
           <div className="overflow-x-auto">
             <div className="min-w-[1200px]">
               {/* Table Header */}
-              <div className="grid grid-cols-18 gap-1 px-2 sm:px-3 py-2 sm:py-3  bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 border-b border-slate-700 text-xs">
+              <div className="grid grid-cols-18 gap-1 px-2 sm:px-3 py-2 sm:py-3  bg-gray-800 border-b border-slate-700 text-xs">
                 <div className="text-slate-400 font-medium col-span-2 text-xs sm:text-sm">
                   Trader
                 </div>

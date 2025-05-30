@@ -6,6 +6,7 @@ import {
   YAxis,
   ResponsiveContainer,
   CartesianGrid,
+  Tooltip,
 } from "recharts";
 
 export default function VirtualWalletEvolution() {
@@ -24,11 +25,34 @@ export default function VirtualWalletEvolution() {
     { date: "Jun 15", walletValue: 42, btcValue: 25 },
   ];
 
+  // Custom Tooltip component
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-gray-800 border border-gray-700 rounded-lg p-3 shadow-lg">
+          <p className="text-gray-300 text-sm mb-2">{label}</p>
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-1 bg-blue-500 rounded"></div>
+              <span className="text-white text-sm">
+                Wallet: {payload[0].value}%
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-1 border border-dashed border-yellow-500 rounded"></div>
+              <span className="text-white text-sm">
+                BTC: {payload[1].value}%
+              </span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
-    <div
-      className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 px-4 sm:px-6 lg:px-14 p-4 sm:p-6 rounded-lg w-full max-w-[1400px] mx-auto overflow-x-auto"
-      style={{ backgroundColor: "#2B3544" }}
-    >
+    <div className="bg-gray-800 px-4 sm:px-6 lg:px-14 p-4 sm:p-6 rounded-lg w-full max-w-[1400px] mx-auto overflow-x-auto mt-4">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6 sm:mb-8">
         <h2 className="text-white text-xl sm:text-2xl font-semibold">
@@ -106,6 +130,7 @@ export default function VirtualWalletEvolution() {
               tickFormatter={(value) => `${value}%`}
               width={35}
             />
+            <Tooltip content={<CustomTooltip />} />
             <Line
               type="monotone"
               dataKey="walletValue"

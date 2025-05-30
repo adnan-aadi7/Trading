@@ -88,7 +88,7 @@ function TimeBasePerformance() {
   );
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 w-full px-4 sm:px-14 mt-6 sm:mt-10">
+    <div className=" p-4 sm:p-6 w-full px-4 sm:px-14 mt-6 sm:mt-10">
       {/* Header */}
       <h2 className="text-white text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">
         Time-Based Performance
@@ -99,7 +99,7 @@ function TimeBasePerformance() {
         {performanceCards.map((card, index) => (
           <div
             key={index}
-            className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-3 sm:p-4 rounded-lg border border-gray-700"
+            className="bg-gray-800 p-3 sm:p-4 rounded-lg border border-gray-700"
           >
             {/* Card Header */}
             <h3 className="text-gray-400 text-xs sm:text-sm font-medium mb-1 sm:mb-2">

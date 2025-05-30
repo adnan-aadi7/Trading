@@ -105,7 +105,7 @@ const PopularActivePairs = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 text-white p-3 sm:p-4 md:p-6 rounded-lg w-full  ">
+    <div className="bg-gray-800 text-white p-3 sm:p-4 md:p-6 rounded-lg w-full  ">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 mb-4 sm:mb-6">
         <h2 className="text-lg sm:text-xl font-medium text-white">

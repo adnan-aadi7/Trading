@@ -9,7 +9,7 @@ function TraderAnalysis() {
   const timePeriods = ["1M", "3M", "6M", "1Y", "All"];
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg w-full px-4 sm:px-14">
+    <div className=" p-4 sm:p-6 rounded-lg w-full px-4 sm:px-14">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6 sm:mb-8">
         <h1 className="text-white text-xl sm:text-2xl font-semibold">
@@ -24,7 +24,7 @@ function TraderAnalysis() {
       {/* Configuration Panels */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Starting Balance */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <label className="block text-gray-400 text-sm font-medium mb-3 sm:mb-4">
             Starting Balance
           </label>
@@ -43,7 +43,7 @@ function TraderAnalysis() {
         </div>
 
         {/* Wallet Percentage */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg">
           <label className="block text-gray-400 text-sm font-medium mb-3 sm:mb-4">
             % of Wallet Used
           </label>
@@ -63,7 +63,7 @@ function TraderAnalysis() {
         </div>
 
         {/* Time Period */}
-        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 p-4 sm:p-6 rounded-lg md:col-span-2 lg:col-span-1">
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg md:col-span-2 lg:col-span-1">
           <label className="block text-gray-400 text-sm font-medium mb-3 sm:mb-4">
             Time Period
           </label>

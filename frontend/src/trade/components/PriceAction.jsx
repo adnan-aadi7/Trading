@@ -137,7 +137,7 @@ const PriceActionChart = () => {
   const exitPoint = chartData.find((d) => d.isExitPoint);
 
   return (
-    <div className="bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 rounded-lg p-3 sm:p-4 md:p-6">
+    <div className=" bg-gray-800 rounded-lg p-3 sm:p-4 md:p-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 mb-4 sm:mb-6">
         <h2 className="text-white text-lg sm:text-xl font-semibold">
@@ -171,7 +171,7 @@ const PriceActionChart = () => {
       </div>
 
       {/* Chart Container */}
-      <div className="bg-gradient-to-br bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 rounded-lg p-2 sm:p-4 mb-4 sm:mb-6">
+      <div className="bg-gradient-to-br bg-gray-800 rounded-lg p-2 sm:p-4 mb-4 sm:mb-6">
         <div className="h-80 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
