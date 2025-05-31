@@ -161,7 +161,7 @@ const StreakTraders = () => {
           {traders.map((trader, index) => (
             <div
               key={trader.id}
-              className={`grid grid-cols-5 gap-2 px-2 sm:px-4 py-2 hover:bg-slate-750 transition-colors ${
+              className={`grid grid-cols-5 gap-2 px-3 sm:px-5 py-3 rounded-lg hover:bg-gray-700 transition-colors ${
                 index !== traders.length - 1 ? "border-b border-slate-700" : ""
               }`}
             >

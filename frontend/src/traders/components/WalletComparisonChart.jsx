@@ -64,7 +64,7 @@ const WalletComparisonChart = () => {
   };
 
   return (
-    <div className="bg-gray-800 text-white p-4 sm:p-6 rounded-lg w-full max-w-[1400px] mx-auto mt-6 sm:mt-10 overflow-x-auto">
+    <div className="bg-gray-800 text-white p-4 sm:p-6 rounded-lg w-full max-w-[1410px] mx-auto mt-6 sm:mt-10 overflow-x-auto">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6 sm:mb-8">
         <h2 className="text-xl sm:text-2xl font-semibold text-white">

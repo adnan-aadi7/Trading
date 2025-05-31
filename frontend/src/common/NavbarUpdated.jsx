@@ -15,7 +15,8 @@ const NavbarUpdated = () => {
   const [isTimeDropdownOpen, setIsTimeDropdownOpen] = useState(false);
   const [selectedTime, setSelectedTime] = useState("24H");
   const [isCustomDateOpen, setIsCustomDateOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   const timeOptions = ["1H", "4H", "12H", "24H", "7D", "30D", "Custom"];
 
@@ -29,7 +30,7 @@ const NavbarUpdated = () => {
   };
 
   const handleCustomDateSelect = () => {
-    // Format the single selected date for display
+    // Format the date range for display
     const formatDate = (date) => {
       return date.toLocaleDateString("en-US", {
         month: "short",
@@ -37,13 +38,13 @@ const NavbarUpdated = () => {
         year: "numeric",
       });
     };
-    setSelectedTime(formatDate(selectedDate)); // Display the single date
+    setSelectedTime(`${formatDate(startDate)} - ${formatDate(endDate)}`);
     setIsCustomDateOpen(false);
     setIsTimeDropdownOpen(false);
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-gray-900 px-4 sm:px-14 md:px-6 lg:px-13 py-5 ">
+    <nav className="sticky top-0 z-50 bg-gray-800 px-4 sm:px-14 md:px-6 lg:px-13 py-5 ">
       <div className="flex items-center justify-between gap-2">
         {/* Logo */}
         <div className="flex items-center gap-1 sm:gap-2">
@@ -118,7 +119,7 @@ const NavbarUpdated = () => {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-medium text-white">
-                      Select Date
+                      Select Date Range
                     </h3>
                     <button
                       onClick={() => setIsCustomDateOpen(false)}
@@ -127,18 +128,34 @@ const NavbarUpdated = () => {
                       ×
                     </button>
                   </div>
-                  <div>
-                    <label className="block text-xs text-gray-400 mb-1">
-                      Select Date
-                    </label>
-                    <DatePicker
-                      selected={selectedDate}
-                      onChange={(date) => setSelectedDate(date)}
-                      className="w-full bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      dateFormat="MMM d, yyyy"
-                      calendarClassName="bg-gray-900 border border-slate-600"
-                      popperClassName="react-datepicker-popper"
-                    />
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block text-xs text-gray-400 mb-1">
+                        From
+                      </label>
+                      <DatePicker
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
+                        className="w-full bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        dateFormat="MMM d, yyyy"
+                        calendarClassName="bg-gray-900 border border-slate-600"
+                        popperClassName="react-datepicker-popper"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-gray-400 mb-1">
+                        To
+                      </label>
+                      <DatePicker
+                        selected={endDate}
+                        onChange={(date) => setEndDate(date)}
+                        className="w-full bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        dateFormat="MMM d, yyyy"
+                        calendarClassName="bg-gray-900 border border-slate-600"
+                        popperClassName="react-datepicker-popper"
+                        minDate={startDate}
+                      />
+                    </div>
                   </div>
                   <div className="flex gap-2">
                     <button

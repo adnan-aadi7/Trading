@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
   AreaChart,
   Area,
+  Text,
 } from "recharts";
 
 const BtcIndex = () => {
@@ -78,7 +79,7 @@ const BtcIndex = () => {
       const changeColor = change24h >= 0 ? "text-green-400" : "text-red-400";
 
       return (
-        <div className="bg-gray-800 border border-slate-600 rounded-lg p-3 shadow-xl max-w-3xl">
+        <div className="bg-gray-800 border border-slate-600 rounded-lg p-2 shadow-xl max-w-xs text-xs">
           <div className="text-blue-400 font-semibold mb-2">{label}</div>
           <div className="flex justify-between items-center">
             <span className="text-gray-300 text-sm">BTC Price:</span>
@@ -99,7 +100,7 @@ const BtcIndex = () => {
   const PositionTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-gray-800 border border-slate-600 rounded-lg p-3 shadow-xl">
+        <div className="bg-gray-800 border border-slate-600 rounded-lg p-2 shadow-xl max-w-xs text-xs">
           <div className="text-blue-400 font-semibold mb-2">{label}</div>
           <div className="space-y-1">
             <div className="flex justify-between items-center">
@@ -130,7 +131,7 @@ const BtcIndex = () => {
   return (
     <div className=" max-w-3xl mt-16 bg-gray-800 rounded-xl border border-slate-700 p-4 mb-6">
       {/* BTC Price Chart */}
-      <div className="mb-6 pb-6 border-b border-slate-700">
+      <div className="">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-white text-lg font-medium">BTC Price</h2>
           <span
@@ -144,7 +145,7 @@ const BtcIndex = () => {
         </div>
         <div className="h-[150px]">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={comparisonData}>
+            <LineChart data={comparisonData} syncId="chartsSync">
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
               <XAxis
                 dataKey="date"
@@ -176,12 +177,35 @@ const BtcIndex = () => {
 
       {/* Trading Position Index Chart */}
       <div>
-        <h2 className="text-white text-lg font-medium mb-4">
-          Trading Position Index
-        </h2>
-        <div className="h-[150px]">
+        {/* Wrap chart container in relative div for positioning labels */}
+        <div className="h-[150px] relative">
+          {/* Add positioned text for 'short' and 'Long' */}
+          {/* 'short' label */}
+          <div
+            className="text-white text-lg  z-10 absolute"
+            style={{
+              top: "20%",
+              left: "55%",
+              transform: "translate(-50%, -50%)",
+              pointerEvents: "none",
+            }}
+          >
+            short
+          </div>
+          {/* 'Long' label */}
+          <div
+            className="text-white text-lg z-10 absolute"
+            style={{
+              top: "60%",
+              left: "55%",
+              transform: "translate(-50%, -50%)",
+              pointerEvents: "none",
+            }}
+          >
+            Long
+          </div>
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={comparisonData}>
+            <AreaChart data={comparisonData} syncId="chartsSync">
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
               <XAxis
                 dataKey="date"
@@ -200,6 +224,30 @@ const BtcIndex = () => {
                 cursor={{ stroke: "#A0AEC0", strokeDasharray: "3 3" }}
                 content={<PositionTooltip />}
               />
+              {/* Add 'short' label using Recharts Text component */}
+              <Text
+                x="50%"
+                y="35%"
+                textAnchor="middle"
+                verticalAnchor="middle"
+                fill="#ffffff"
+                fontSize={14}
+                fontWeight="bold"
+              >
+                short
+              </Text>
+              {/* Add 'Long' label using Recharts Text component */}
+              <Text
+                x="50%"
+                y="65%"
+                textAnchor="middle"
+                verticalAnchor="middle"
+                fill="#ffffff"
+                fontSize={14}
+                fontWeight="bold"
+              >
+                Long
+              </Text>
               <Area
                 type="monotone"
                 dataKey="longPercentage"

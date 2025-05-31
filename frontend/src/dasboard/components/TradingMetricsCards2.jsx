@@ -50,7 +50,7 @@ const TradingMetricsCards2 = () => {
         {cardData.map((card, index) => (
           <div
             key={index}
-            className=" rounded-lg p-3 sm:p-4 w-full bg-gradient-to-br bg-gray-800"
+            className=" rounded-lg p-3 sm:p-4 w-full bg-gradient-to-br bg-gray-800 hover:scale-105 transition-transform duration-300"
           >
             <div className="flex items-center justify-between mb-2 sm:mb-3">
               <h3 className="text-gray-400 text-xs sm:text-sm font-medium truncate">

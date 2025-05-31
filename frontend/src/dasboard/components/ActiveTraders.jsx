@@ -58,7 +58,10 @@ const ActiveTraders = () => {
         {/* Traders List */}
         <div className="space-y-4 w-full">
           {traders.map((trader) => (
-            <div key={trader.rank} className="flex items-center gap-4">
+            <div
+              key={trader.rank}
+              className="flex items-center gap-4 p-2 rounded-lg hover:bg-gray-700 transition-colors"
+            >
               {/* Rank Circle */}
               <div
                 className={`w-5 h-5 rounded-full flex items-center justify-center text-sm font-bold ${

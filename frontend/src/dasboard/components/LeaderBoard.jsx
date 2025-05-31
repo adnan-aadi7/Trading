@@ -247,7 +247,7 @@ const Leaderboard = () => {
               <Filter size={14} className="sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Filters</span>
             </button>
-            <button className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-br  from-gray-900 via-gray-800 to-indigo-900 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
+            <button className="flex items-center gap-1.5 sm:gap-2 bg-gray-800 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
               <Download size={14} className="sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Export</span>
             </button>
@@ -257,7 +257,7 @@ const Leaderboard = () => {
         {/* Table Container */}
         <div className="bg-gray-800 rounded-xl border border-slate-700 overflow-hidden ">
           <div className="overflow-x-auto">
-            <div className="min-w-[1200px]">
+            <div className="w-[1410px]">
               {/* Table Header */}
               <div className="grid grid-cols-18 gap-1 px-2 sm:px-3 py-2 sm:py-3  bg-gray-800 border-b border-slate-700 text-xs">
                 <div className="text-slate-400 font-medium col-span-2 text-xs sm:text-sm">
@@ -317,7 +317,7 @@ const Leaderboard = () => {
               {currentTraders.map((trader, index) => (
                 <div
                   key={trader.id}
-                  className={`grid grid-cols-18 gap-1 px-2 sm:px-3 py-2 sm:py-3 hover:bg-slate-750 transition-colors text-xs ${
+                  className={`grid grid-cols-18 gap-1 px-2 sm:px-3 py-2 sm:py-3 rounded-lg hover:bg-gray-700 transition-colors ${
                     index !== currentTraders.length - 1
                       ? "border-b border-slate-700"
                       : ""
@@ -454,15 +454,15 @@ const Leaderboard = () => {
                   {/* Sharpe Ratio */}
                   <div className="flex items-center justify-center">
                     <div className="w-full max-w-[80px]">
-                      <div className="relative h-2 bg-slate-700 rounded-full overflow-hidden">
+                      <div className="relative h-2 bg-slate-700 overflow-hidden">
                         <div
-                          className="absolute top-0 left-0 h-full bg-gradient-to-r from-green-500 to-blue-500"
+                          className="absolute top-0 left-0 h-full bg-white"
                           style={{
                             width: `${(trader.sharpeRatio / 2.5) * 100}%`,
                           }}
-                        />
+                        ></div>
                       </div>
-                      <span className="text-emerald-400 font-medium whitespace-nowrap text-xs sm:text-sm mt-0.5 block text-center">
+                      <span className="text-white font-medium whitespace-nowrap text-xs sm:text-sm ml-2">
                         {trader.sharpeRatio}
                       </span>
                     </div>

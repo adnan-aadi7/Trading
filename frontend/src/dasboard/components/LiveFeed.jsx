@@ -70,7 +70,7 @@ const LiveFeed = () => {
           {trades.map((trade) => (
             <div
               key={trade.id}
-              className="bg-gradient-to-br bg-gray-800 rounded-xl p-4 border border-slate-700"
+              className="bg-gradient-to-br bg-gray-800 rounded-xl p-4 border border-slate-700 hover:bg-gray-700 transition-colors"
             >
               {/* Trade Type Badge and Timestamp */}
               <div className="flex items-center justify-between mb-3">

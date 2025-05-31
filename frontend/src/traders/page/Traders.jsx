@@ -1,6 +1,6 @@
 import React from "react";
 // import NavbarUpdated from "../../common/NavbarUpdated";
-import TraderAnalysis from "../components/TraderAnalysis";
+// import TraderAnalysis from "../components/TraderAnalysis";
 import TraderProfile from "../components/TraderProfile";
 import VirtualWalletEvolution from "../components/VirtualWalletEvolution";
 import TimeBasePerformance from "../components/TimebasePeformance";
@@ -16,7 +16,7 @@ const Traders = () => {
     <>
       {/* <NavbarUpdated /> */}
       <Navbar />
-      <TraderAnalysis />
+      {/* <TraderAnalysis /> */}
       <TraderProfile />
       <VirtualWalletEvolution />
       <TimeBasePerformance />

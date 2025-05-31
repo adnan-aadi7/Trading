@@ -99,10 +99,7 @@ function PerformanceComparison() {
   };
 
   return (
-    <div
-      className=" p-4 sm:p-6 rounded-lg w-full max-w-[1400px] mx-auto overflow-x-auto"
-      style={{ backgroundColor: "#2B3544" }}
-    >
+    <div className=" bg-gray-800 p-4 sm:p-6 rounded-lg w-full max-w-[1410px] mx-auto overflow-x-auto">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6 sm:mb-8">
         <h2 className="text-white text-xl sm:text-2xl font-semibold">

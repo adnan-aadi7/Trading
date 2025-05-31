@@ -76,7 +76,7 @@ function BehaviorMetrics() {
         {metricsData.map((metric, index) => (
           <div
             key={index}
-            className="bg-gray-800 p-4 sm:p-6 rounded-lg border border-gray-700"
+            className="bg-gray-800 p-4 sm:p-6 rounded-lg border border-gray-700 hover:scale-105 transition-transform duration-300"
           >
             {/* Metric Title */}
             <h3 className="text-gray-400 text-xs sm:text-sm font-medium mb-2 sm:mb-4 line-clamp-2">

@@ -51,7 +51,10 @@ const TradingMetricsCards = () => {
     <div className="p-3 sm:p-4 md:p-6 min-h-full ">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 w-full ">
         {metrics.map((metric, i) => (
-          <div key={i} className=" rounded-lg p-3 sm:p-4 w-full  bg-gray-800">
+          <div
+            key={i}
+            className=" rounded-lg p-3 sm:p-4 w-full  bg-gray-800 hover:scale-105 transition-transform duration-300"
+          >
             <div className="flex items-center justify-between mb-2 sm:mb-3">
               <h3 className="text-gray-300 text-xs sm:text-sm font-medium truncate">
                 {metric.title}

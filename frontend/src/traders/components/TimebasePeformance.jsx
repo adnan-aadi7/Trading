@@ -99,7 +99,7 @@ function TimeBasePerformance() {
         {performanceCards.map((card, index) => (
           <div
             key={index}
-            className="bg-gray-800 p-3 sm:p-4 rounded-lg border border-gray-700"
+            className="bg-gray-800 p-3 sm:p-4 rounded-lg border border-gray-700 hover:scale-105 transition-transform duration-300"
           >
             {/* Card Header */}
             <h3 className="text-gray-400 text-xs sm:text-sm font-medium mb-1 sm:mb-2">
