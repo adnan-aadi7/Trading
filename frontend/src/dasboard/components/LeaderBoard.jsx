@@ -255,8 +255,8 @@ const Leaderboard = () => {
         </div>
 
         {/* Table Container */}
-        <div className="bg-gray-800 rounded-xl border border-slate-700 overflow-hidden ">
-          <div>
+        <div className="bg-gray-800 rounded-xl border border-slate-700 ">
+          <div className="overflow-x-auto lg:overflow-visible">
             <div className="w-[1410px]">
               {/* Table Header */}
               <div className="grid grid-cols-18 gap-1 px-2 sm:px-3 py-2 sm:py-3  bg-gray-800 border-b border-slate-700 text-xs">
