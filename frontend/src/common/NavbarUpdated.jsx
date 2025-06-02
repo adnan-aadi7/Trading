@@ -99,7 +99,7 @@ const NavbarUpdated = () => {
             </button>
 
             {isTimeDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-24 bg-gray-900 border border-slate-600 rounded-lg shadow-lg z-50">
+              <div className="absolute right-0 mt-2 w-[88px] bg-gray-900 border border-slate-600 rounded-lg shadow-lg z-50">
                 {timeOptions.map((time) => (
                   <button
                     key={time}

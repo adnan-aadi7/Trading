@@ -40,7 +40,7 @@ const RiskMetrics = () => {
   ];
 
   return (
-    <div className=" bg-gray-800 p-3 sm:p-4 md:p-6 rounded-lg w-full sm:w-80 mt-12">
+    <div className=" bg-gray-800 p-3 sm:p-4 md:p-6 rounded-lg w-full sm:w-80 mt-2">
       <h2 className="text-white text-lg sm:text-xl font-bold mb-4 sm:mb-6">
         Risk Metrics
       </h2>

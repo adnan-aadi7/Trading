@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { TrendingUp, ArrowUp, ArrowDown, Circle, Minus } from "lucide-react";
+import {
+  TrendingUp,
+  ArrowUp,
+  ArrowDown,
+  Circle,
+  Minus,
+  LogIn,
+  LogOut,
+} from "lucide-react";
 import {
   BarChart,
   Bar,
@@ -52,51 +60,57 @@ const TradeTimeline = () => {
     },
   ];
 
-  // Live feed data
+  // Live feed data (updated to match image style)
   const liveFeedData = [
     {
       id: 1,
-      time: "14:23:45",
-      type: "open",
-      pair: "BTC/USDT",
-      price: "65,432.10",
-      amount: "0.5 BTC",
-      value: "$32,716.05",
-      color: "text-green-500",
-      icon: <Circle className="w-2 h-2 fill-green-500" />,
+      date: "May 12",
+      time: "08:42:15 UTC",
+      label: "Entry Position",
+      description:
+        "Entered long position at $27,456.21 with 10x leverage. Initial position size: $5,000.",
+      icon: <LogIn className="w-4 h-4 text-white" />,
+      bgColor: "bg-green-500",
     },
     {
       id: 2,
-      time: "14:45:12",
-      type: "increase",
-      pair: "BTC/USDT",
-      price: "65,789.45",
-      amount: "+0.3 BTC",
-      value: "+$19,736.84",
-      color: "text-blue-500",
-      icon: <ArrowUp className="w-3 h-3" />,
+      date: "May 12",
+      time: "14:23:12 UTC",
+      label: "Position Increase",
+      description:
+        "Added $500 to position at $27,891.35. Position increase: +10%.<b>",
+      icon: <ArrowUp className="w-4 h-4 text-white" />,
+      bgColor: "bg-blue-500",
     },
     {
       id: 3,
-      time: "15:12:33",
-      type: "decrease",
-      pair: "BTC/USDT",
-      price: "65,123.78",
-      amount: "-0.2 BTC",
-      value: "-$13,024.76",
-      color: "text-yellow-500",
-      icon: <ArrowDown className="w-3 h-3" />,
+      date: "May 13",
+      time: "02:17:45 UTC",
+      label: "Position Increase",
+      description:
+        "Added $500 to position at $28,102.67. Position increase: +10%.<b>",
+      icon: <ArrowUp className="w-4 h-4 text-white" />,
+      bgColor: "bg-blue-500",
     },
     {
       id: 4,
-      time: "15:45:21",
-      type: "closed",
-      pair: "BTC/USDT",
-      price: "66,123.45",
-      amount: "0.6 BTC",
-      value: "$39,674.07",
-      color: "text-red-500",
-      icon: <Minus className="w-3 h-3" />,
+      date: "May 13",
+      time: "19:42:32 UTC",
+      label: "Partial Close",
+      description:
+        "Closed 25% of position at $29,156.78. Realized profit: $412.35.",
+      icon: <Minus className="w-4 h-4 text-white" />,
+      bgColor: "bg-yellow-500",
+    },
+    {
+      id: 5,
+      date: "May 14",
+      time: "14:23:56 UTC",
+      label: "Exit Position",
+      description:
+        "Closed remaining position at $29,873.45. Total profit: $2,418.24 (+8.81%).",
+      icon: <LogOut className="w-4 h-4 text-white" />,
+      bgColor: "bg-red-500",
     },
   ];
 
@@ -199,40 +213,42 @@ const TradeTimeline = () => {
       {/* Live Feed Section */}
       <div className="bg-slate-800 rounded-lg p-3 mb-4">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-white text-sm font-medium">Live Feed</h3>
+          <h3 className="text-white text-lg font-medium">Live Feed</h3>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
             <span className="text-green-500 text-xs">Live</span>
           </div>
         </div>
-        <div className="space-y-3">
-          {liveFeedData.map((event) => (
-            <div key={event.id} className="flex items-start gap-3">
+        <div className="space-y-4">
+          {liveFeedData.map((event, index) => (
+            <div
+              key={event.id}
+              className="flex items-start gap-3 hover:bg-slate-700 rounded-md px-2 py-1 transition-colors duration-200 cursor-pointer"
+            >
+              {/* Icon and Vertical Line */}
               <div className="flex flex-col items-center">
-                <div className={`${event.color}`}>{event.icon}</div>
-                <div className="w-0.5 h-full bg-gray-700"></div>
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-gray-400 text-xs">{event.time}</span>
-                    <span className={`text-xs font-medium ${event.color}`}>
-                      {event.type.toUpperCase()}
-                    </span>
-                  </div>
-                  <span className="text-gray-300 text-xs">{event.pair}</span>
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center ${event.bgColor}`}
+                >
+                  {event.icon}
                 </div>
-                <div className="flex items-center justify-between mt-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-white text-sm">${event.price}</span>
-                    <span className="text-gray-400 text-xs">
-                      {event.amount}
-                    </span>
-                  </div>
-                  <span className={`text-sm font-medium ${event.color}`}>
-                    {event.value}
+                {index < liveFeedData.length - 1 && (
+                  <div className="w-0.5 h-full bg-gray-700"></div>
+                )}
+              </div>
+              {/* Event Details */}
+              <div className="flex-1 pt-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-white text-sm font-semibold">
+                    {event.label}
+                  </span>
+                  <span className="text-gray-400 text-xs">
+                    {event.date}, {event.time}
                   </span>
                 </div>
+                <p className="text-gray-300 text-sm leading-tight">
+                  {event.description}
+                </p>
               </div>
             </div>
           ))}

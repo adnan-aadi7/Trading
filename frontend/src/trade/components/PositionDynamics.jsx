@@ -2,7 +2,7 @@ import React from "react";
 
 export default function PositionDynamics() {
   return (
-    <div className=" bg-gray-800 rounded-lg p-3 sm:p-4 md:p-6 w-full sm:w-80">
+    <div className=" bg-gray-800 rounded-lg p-3 sm:p-4 md:p-6 w-full sm:w-80 mt-2">
       {/* Header */}
       <h2 className="text-white text-lg sm:text-xl font-semibold mb-4 sm:mb-6">
         Position Dynamics
