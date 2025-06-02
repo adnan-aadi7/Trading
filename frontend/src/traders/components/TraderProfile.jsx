@@ -43,7 +43,7 @@ function TraderProfile() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-4 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 ">
         {/* Virtual Wallet */}
         <div className="bg-gray-800 p-4 sm:p-6 rounded-lg hover:scale-105 transition-transform duration-300">
           <h3 className="text-gray-400 text-sm font-medium mb-2">
@@ -176,6 +176,17 @@ function TraderProfile() {
             68.4%
           </div>
           <div className="text-green-400 text-xs sm:text-sm">Above average</div>
+        </div>
+
+        {/* Sharpe Ratio */}
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-lg hover:scale-105 transition-transform duration-300">
+          <h3 className="text-gray-400 text-sm font-medium mb-2">
+            Sharpe Ratio
+          </h3>
+          <div className="text-white text-2xl sm:text-3xl font-bold mb-1">
+            2.45
+          </div>
+          <div className="text-green-400 text-xs sm:text-sm">Excellent</div>
         </div>
       </div>
     </div>

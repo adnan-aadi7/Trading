@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Search, SlidersHorizontal, Clock, ChevronDown } from "lucide-react";
 import logo from "../../assets/images/updatedlogo.svg"; // Adjust the path as necessary
-import Popup from "./Popup"; // Import the new Popup component
+import Popup from "./Config"; // Import the new Popup component
 
 const Navbar = () => {
   const [searchValue, setSearchValue] = useState("");

@@ -959,7 +959,7 @@ const HistoryTable = () => {
   ];
 
   const totalTrades = trades.length;
-  const tradesPerPage = 5;
+  const tradesPerPage = 10;
   const totalPages = Math.ceil(totalTrades / tradesPerPage);
 
   const getPnlColor = (value) => {
@@ -1116,7 +1116,7 @@ const HistoryTable = () => {
                   Close
                 </th>
                 <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
-                  Lev
+                  Leverage
                 </th>
                 <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
                   Balance
@@ -1125,7 +1125,10 @@ const HistoryTable = () => {
                   Closed
                 </th>
                 <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
-                  Risk
+                  Sharpe
+                </th>
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
+                  Risk Ratio
                 </th>
               </tr>
             </thead>
@@ -1206,13 +1209,16 @@ const HistoryTable = () => {
                   <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
                     <div className="flex items-center">
                       <div
-                        className="w-20 h-2 bg-white  mr-2"
+                        className="w-20 h-2 bg-white mr-2"
                         style={{
                           width: `${(parseFloat(trade.riskRatio) / 5) * 80}px`,
                         }}
                       ></div>
                       {trade.riskRatio}
                     </div>
+                  </td>
+                  <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
+                    {trade.riskRatio}
                   </td>
                 </tr>
               ))}

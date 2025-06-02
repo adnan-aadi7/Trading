@@ -243,7 +243,7 @@ const Leaderboard = () => {
             Trader Performance Leaderboard
           </h1>
           <div className="flex gap-2 sm:gap-3">
-            <button className="flex items-center gap-1.5 sm:gap-2  bg-gray-800 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
+            <button className="flex items-center gap-1.5 sm:gap-2 bg-gray-800 hover:bg-slate-600 text-white px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg transition-colors text-xs sm:text-sm">
               <Filter size={14} className="sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Filters</span>
             </button>
@@ -255,60 +255,60 @@ const Leaderboard = () => {
         </div>
 
         {/* Table Container */}
-        <div className="bg-gray-800 rounded-xl border border-slate-700 ">
-          <div className="overflow-x-auto lg:overflow-visible">
-            <div className="w-[1410px]">
+        <div className="bg-gray-800 rounded-xl border border-slate-700">
+          <div className="overflow-x-auto">
+            <div className="min-w-[1200px] lg:min-w-full">
               {/* Table Header */}
-              <div className="grid grid-cols-18 gap-1 px-2 sm:px-3 py-2 sm:py-3  bg-gray-800 border-b border-slate-700 text-xs">
-                <div className="text-slate-400 font-medium col-span-2 text-xs sm:text-sm">
+              <div className="grid grid-cols-18 gap-1 px-2 sm:px-3 py-2 sm:py-3 bg-gray-800 border-b border-slate-700 text-xs mx-2 sm:mx-5">
+                <div className="text-slate-400 font-medium col-span-2 text-[10px] sm:text-xs md:text-sm">
                   Trader
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   PNL
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Avg PNL
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Config PNL
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Avg DD
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Max DD
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Trades
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Abs PNL
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Avg Abs
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Min Abs
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Min Config
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Liq Count
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Win Rate
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Avg DU
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Max DU
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Risk Ratio
                 </div>
-                <div className="text-slate-400 font-medium text-center text-xs sm:text-sm">
+                <div className="text-slate-400 font-medium text-center text-[10px] sm:text-xs md:text-sm">
                   Sharpe
                 </div>
               </div>
@@ -326,15 +326,15 @@ const Leaderboard = () => {
                   {/* Trader Info */}
                   <div className="flex items-center gap-1 sm:gap-2 col-span-2">
                     <div
-                      className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full ${trader.avatarBg} flex items-center justify-center text-white text-xs font-semibold flex-shrink-0`}
+                      className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full ${trader.avatarBg} flex items-center justify-center text-white text-[10px] sm:text-xs md:text-sm font-semibold flex-shrink-0`}
                     >
                       {trader.avatar}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="text-white font-medium truncate text-xs sm:text-sm">
+                      <div className="text-white font-medium truncate text-[10px] sm:text-xs md:text-sm">
                         #{trader.id} {trader.name}
                       </div>
-                      <div className="text-slate-400 truncate text-xs">
+                      <div className="text-slate-400 truncate text-[8px] sm:text-xs">
                         {trader.assets}
                       </div>
                     </div>
@@ -342,70 +342,70 @@ const Leaderboard = () => {
 
                   {/* PNL */}
                   <div className="flex items-center justify-center">
-                    <span className="text-green-400 font-semibold whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-green-400 font-semibold whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.pnl}
                     </span>
                   </div>
 
                   {/* Avg PNL */}
                   <div className="flex items-center justify-center">
-                    <span className="text-green-400 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-green-400 font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.avgPnl}
                     </span>
                   </div>
 
                   {/* Config PNL */}
                   <div className="flex items-center justify-center">
-                    <span className="text-green-400 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-green-400 font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.configPnl}
                     </span>
                   </div>
 
                   {/* Avg Drawdown */}
                   <div className="flex items-center justify-center">
-                    <span className="text-red-400 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-red-400 font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.avgDrawdown}
                     </span>
                   </div>
 
                   {/* Max Drawdown */}
                   <div className="flex items-center justify-center">
-                    <span className="text-red-400 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-red-400 font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.maxDrawdown}
                     </span>
                   </div>
 
                   {/* Total Trades */}
                   <div className="flex items-center justify-center">
-                    <span className="text-white font-medium whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-white font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.totalTrades}
                     </span>
                   </div>
 
                   {/* Absolute PNL */}
                   <div className="flex items-center justify-center">
-                    <span className="text-blue-400 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-blue-400 font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.absolutePnl}
                     </span>
                   </div>
 
                   {/* Avg Absolute PNL */}
                   <div className="flex items-center justify-center">
-                    <span className="text-blue-400 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-blue-400 font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.avgAbsolutePnl}
                     </span>
                   </div>
 
                   {/* Min Absolute PNL */}
                   <div className="flex items-center justify-center">
-                    <span className="text-blue-300 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-blue-300 font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.minAbsolutePnl}
                     </span>
                   </div>
 
                   {/* Min Config PNL */}
                   <div className="flex items-center justify-center">
-                    <span className="text-blue-300 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-blue-300 font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.minConfigPnl}
                     </span>
                   </div>
@@ -413,11 +413,11 @@ const Leaderboard = () => {
                   {/* Liquidation Count */}
                   <div className="flex items-center justify-center">
                     <span
-                      className={`font-medium whitespace-nowrap ${
+                      className={`font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm ${
                         trader.liquidationCount === 0
                           ? "text-green-400"
                           : "text-red-400"
-                      } text-xs sm:text-sm`}
+                      }`}
                     >
                       {trader.liquidationCount}
                     </span>
@@ -425,36 +425,36 @@ const Leaderboard = () => {
 
                   {/* Win Rate */}
                   <div className="flex items-center justify-center">
-                    <span className="text-white font-medium whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-white font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.winRate}
                     </span>
                   </div>
 
                   {/* Avg DU */}
                   <div className="flex items-center justify-center">
-                    <span className="text-yellow-400 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-yellow-400 font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.avgDU}
                     </span>
                   </div>
 
                   {/* Max DU */}
                   <div className="flex items-center justify-center">
-                    <span className="text-yellow-400 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-yellow-400 font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.maxDU}
                     </span>
                   </div>
 
                   {/* Risk Ratio */}
                   <div className="flex items-center justify-center">
-                    <span className="text-purple-400 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    <span className="text-purple-400 font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm">
                       {trader.riskRatio}
                     </span>
                   </div>
 
                   {/* Sharpe Ratio */}
                   <div className="flex items-center justify-center">
-                    <div className="w-full max-w-[80px]">
-                      <div className="relative h-2 bg-slate-700 overflow-hidden">
+                    <div className="w-full max-w-[60px] sm:max-w-[80px]">
+                      <div className="relative h-1.5 sm:h-2 bg-slate-700 overflow-hidden">
                         <div
                           className="absolute top-0 left-0 h-full bg-white"
                           style={{
@@ -462,7 +462,7 @@ const Leaderboard = () => {
                           }}
                         ></div>
                       </div>
-                      <span className="text-white font-medium whitespace-nowrap text-xs sm:text-sm ml-2">
+                      <span className="text-white font-medium whitespace-nowrap text-[10px] sm:text-xs md:text-sm ml-1 sm:ml-2">
                         {trader.sharpeRatio}
                       </span>
                     </div>
@@ -475,7 +475,7 @@ const Leaderboard = () => {
 
         {/* Footer with pagination */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 sm:gap-0 mt-4 sm:mt-6">
-          <div className="text-slate-400 text-xs sm:text-sm">
+          <div className="text-slate-400 text-[10px] sm:text-xs md:text-sm">
             Showing {(currentPage - 1) * tradersPerPage + 1}-
             {Math.min(currentPage * tradersPerPage, traders.length)} of{" "}
             {traders.length} traders
