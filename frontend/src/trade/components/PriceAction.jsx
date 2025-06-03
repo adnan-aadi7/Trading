@@ -109,7 +109,7 @@ const PriceActionChart = () => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
-        <div className="bg-slate-700 border border-slate-600 rounded-lg p-3 shadow-lg">
+        <div className="border border-slate-600/50 rounded-lg p-3 shadow-lg">
           <p className="text-gray-300 text-sm">{label}</p>
           <p className="text-white font-semibold">
             ${payload[0].value.toLocaleString()}

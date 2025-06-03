@@ -1092,6 +1092,9 @@ const HistoryTable = () => {
                   Pair
                 </th>
                 <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
+                  Leverage
+                </th>
+                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
                   PNL %
                 </th>
                 <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
@@ -1114,9 +1117,6 @@ const HistoryTable = () => {
                 </th>
                 <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
                   Close
-                </th>
-                <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
-                  Leverage
                 </th>
                 <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
                   Balance
@@ -1152,6 +1152,9 @@ const HistoryTable = () => {
                         {trade.pair}
                       </span>
                     </div>
+                  </td>
+                  <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
+                    {trade.leverage}
                   </td>
                   <td
                     className={`py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs font-semibold whitespace-nowrap ${getPnlColor(
@@ -1196,9 +1199,6 @@ const HistoryTable = () => {
                   </td>
                   <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
                     {trade.partialClose}
-                  </td>
-                  <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
-                    {trade.leverage}
                   </td>
                   <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
                     {trade.currentBalance}

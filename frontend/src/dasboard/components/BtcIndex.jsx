@@ -79,7 +79,7 @@ const BtcIndex = () => {
       const changeColor = change24h >= 0 ? "text-green-400" : "text-red-400";
 
       return (
-        <div className="bg-gray-800 border border-slate-600 rounded-lg p-2 shadow-xl max-w-xs text-xs">
+        <div className="border border-slate-600/50 rounded-lg p-2 shadow-xl max-w-xs text-xs">
           <div className="text-blue-400 font-semibold mb-2">{label}</div>
           <div className="flex justify-between items-center">
             <span className="text-gray-300 text-sm">BTC Price:</span>
@@ -100,7 +100,7 @@ const BtcIndex = () => {
   const PositionTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-gray-800 border border-slate-600 rounded-lg p-2 shadow-xl max-w-xs text-xs">
+        <div className="border border-slate-600/50 rounded-lg p-2 shadow-xl max-w-xs text-xs">
           <div className="text-blue-400 font-semibold mb-2">{label}</div>
           <div className="space-y-1">
             <div className="flex justify-between items-center">

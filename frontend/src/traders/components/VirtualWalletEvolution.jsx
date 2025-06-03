@@ -29,7 +29,7 @@ export default function VirtualWalletEvolution() {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-gray-800 border border-gray-700 rounded-lg p-3 shadow-lg">
+        <div className="border border-gray-700/50 rounded-lg p-3 shadow-lg">
           <p className="text-gray-300 text-sm mb-2">{label}</p>
           <div className="space-y-1">
             <div className="flex items-center gap-2">

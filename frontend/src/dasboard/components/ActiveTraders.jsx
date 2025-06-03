@@ -64,7 +64,7 @@ const ActiveTraders = () => {
             >
               {/* Rank Circle */}
               <div
-                className={`w-5 h-5 rounded-full flex items-center justify-center text-sm font-bold ${
+                className={`w-5 h-5 rounded-full flex items-center justify-center text-sm font-bold leading-none ${
                   trader.rank === 1
                     ? "bg-blue-600 text-white"
                     : "bg-gray-700 text-gray-300"

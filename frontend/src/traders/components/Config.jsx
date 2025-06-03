@@ -359,6 +359,12 @@ const Popup = ({ isOpen, onClose, onApplyConfig }) => {
               Cancel
             </button>
             <button
+              onClick={onClose}
+              className="px-4 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition-colors"
+            >
+              Return
+            </button>
+            <button
               onClick={handleApplyClick}
               className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium transition-colors"
             >

@@ -44,7 +44,7 @@ const WalletComparisonChart = () => {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-gray-800 border border-gray-600 rounded-lg p-2 sm:p-3 shadow-lg text-gray-300">
+        <div className="border border-gray-600/50 rounded-lg p-2 sm:p-3 shadow-lg text-gray-300">
           <p className="text-white text-xs sm:text-sm mb-1 sm:mb-2 font-semibold">
             {label}
           </p>

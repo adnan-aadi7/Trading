@@ -72,7 +72,7 @@ const PopularActivePairs = () => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
-        <div className="bg-gray-800 border border-gray-600 rounded-lg p-3 shadow-xl">
+        <div className="border border-gray-600/50 rounded-lg p-3 shadow-xl">
           <div className="text-blue-400 font-semibold mb-2">{label}</div>
           <div className="space-y-2">
             <div className="flex justify-between items-center">
@@ -163,7 +163,7 @@ const PopularActivePairs = () => {
                     fill={dataPoint?.color || "#3b82f6"}
                     rx={0}
                     ry={0}
-                    className="transition-all duration-200 hover:opacity-80"
+                    className="transition-all duration-200 hover:bg-opacity-50"
                   />
                 );
               }}

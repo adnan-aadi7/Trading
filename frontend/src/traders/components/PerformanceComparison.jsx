@@ -75,7 +75,7 @@ function PerformanceComparison() {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-gray-800 border border-gray-700 rounded-lg p-3 shadow-lg text-sm text-white">
+        <div className="border border-gray-700/50 rounded-lg p-3 shadow-lg text-sm text-white">
           <p className="font-semibold mb-2">{label}</p>
           {payload.map((entry, index) => (
             <p key={`tooltip-${index}`} className="flex items-center gap-2">

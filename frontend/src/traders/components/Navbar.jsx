@@ -12,7 +12,7 @@ const Navbar = () => {
   const [isConfigOpen, setIsConfigOpen] = useState(false);
 
   // Handlers for the existing Time Period dropdown
-  const timeOptions = ["1H", "4H", "12H", "24H", "7D", "30D"];
+  const timeOptions = ["1H", "4H", "12H", "24H", "7D", "30D", "All Time"];
 
   const handleTimeSelect = (time) => {
     setSelectedTime(time);
@@ -98,7 +98,7 @@ const Navbar = () => {
             </button>
 
             {isTimeDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-24 bg-gray-800 border border-slate-600 rounded-lg shadow-lg z-50">
+              <div className="absolute right-0 mt-2 w-22 bg-gray-800 border border-slate-600 rounded-lg shadow-lg z-50">
                 {timeOptions.map((time) => (
                   <button
                     key={time}

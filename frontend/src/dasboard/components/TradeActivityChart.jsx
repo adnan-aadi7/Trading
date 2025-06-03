@@ -111,7 +111,7 @@ const TradeActivityChart = () => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
-        <div className="bg-gray-800 border border-gray-600 rounded-lg p-4 shadow-xl">
+        <div className="  border border-gray-600/50 rounded-lg p-4 shadow-xl">
           <div className="text-blue-400 font-semibold mb-2">{label}</div>
           <div className="space-y-2">
             <div className="flex justify-between items-center">
