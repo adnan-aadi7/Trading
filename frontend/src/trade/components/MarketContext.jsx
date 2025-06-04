@@ -38,7 +38,7 @@ const MarketContext = () => {
       </h2>
 
       {/* Top Metrics Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6   p-3 sm:p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6 py-3 sm:py-4">
         {topMetrics.map((metric, index) => (
           <div
             key={index}
@@ -58,11 +58,11 @@ const MarketContext = () => {
       </div>
 
       {/* Correlated Assets Section */}
-      <div className=" bg-gray-700 rounded-lg border border-slate-600 p-3 sm:p-4">
-        <div className="text-slate-400 text-xs sm:text-sm mb-2 sm:mb-3">
+      <div className=" bg-gray-700 rounded-lg border border-slate-600 py-3 sm:py-4 p-4">
+        <div className="text-slate-400 text-xs sm:text-sm mb-2 sm:mb-3 px-3 sm:px-4">
           Correlated Assets During Trade
         </div>
-        <div className="flex flex-wrap gap-3 sm:gap-6">
+        <div className="flex justify-between items-start gap-3 sm:gap-6 px-3 sm:px-4">
           {correlatedAssets.map((asset, index) => (
             <div key={index} className="flex flex-col items-center">
               <div className="text-white font-medium text-xs sm:text-sm mb-0.5 sm:mb-1">

@@ -81,7 +81,7 @@ function PerformanceComparison() {
             <p key={`tooltip-${index}`} className="flex items-center gap-2">
               <span style={{ color: entry.stroke }}>●</span>
               {entry.dataKey === "traderPNL" && "Trader PNL:"}
-              {entry.dataKey === "globalAvgPNL" && "Global Avg PNL:"}
+              {entry.dataKey === "globalAvgPNL" && "Global PNL Avg:"}
               {entry.dataKey === "traderConfigPNL" && "Trader Config PNL:"}
               {entry.dataKey === "globalConfigPNL" && "Global Config PNL:"}
               {entry.dataKey === "btcFluctuation" && "BTC Fluctuation:"}
@@ -127,7 +127,7 @@ function PerformanceComparison() {
         {/* Left Chart - Individual PNL vs Global Avg */}
         <div className="min-w-[300px]">
           <h3 className="text-white text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
-            Individual PNL vs Global Avg
+            Individual PNL vs Global PNL Avg
           </h3>
 
           {/* Legend */}
@@ -141,7 +141,7 @@ function PerformanceComparison() {
             <div className="flex items-center gap-2">
               <div className="w-3 sm:w-4 h-1 border-2 border-dashed border-blue-500 rounded"></div>
               <span className="text-gray-300 text-xs sm:text-sm">
-                Global Avg PNL
+                Global PNL Avg
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -212,7 +212,7 @@ function PerformanceComparison() {
         {/* Right Chart - Config PNL vs Global Avg */}
         <div className="min-w-[300px]">
           <h3 className="text-white text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
-            Config PNL vs Global Avg
+            Config PNL vs Global Config PNL
           </h3>
 
           {/* Legend */}

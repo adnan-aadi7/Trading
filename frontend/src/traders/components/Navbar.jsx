@@ -25,7 +25,7 @@ const Navbar = () => {
     // You would typically use this config data here (e.g., update state, trigger actions)
     if (config.timePeriod !== "Custom") {
       setSelectedTime(config.timePeriod);
-    } else if (config.customDate) {
+    } else if (config.customDateRange) {
       const formatDate = (date) => {
         return date.toLocaleDateString("en-US", {
           month: "short",
@@ -33,7 +33,9 @@ const Navbar = () => {
           year: "numeric",
         });
       };
-      setSelectedTime(formatDate(config.customDate));
+      const startDate = formatDate(config.customDateRange.startDate);
+      const endDate = formatDate(config.customDateRange.endDate);
+      setSelectedTime(`${startDate} - ${endDate}`);
     } else {
       setSelectedTime("Custom Date");
     }
