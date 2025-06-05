@@ -1,44 +1,21 @@
 import React, { useState } from "react";
 import { Search, SlidersHorizontal, Clock, ChevronDown } from "lucide-react";
 import logo from "../../assets/images/updatedlogo.svg"; // Adjust the path as necessary
-import Popup from "./Config"; // Import the new Popup component
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Navbar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [isTimeDropdownOpen, setIsTimeDropdownOpen] = useState(false);
   const [selectedTime, setSelectedTime] = useState("24H");
 
-  // State to control the visibility of the config popup
-  const [isConfigOpen, setIsConfigOpen] = useState(false);
+  const navigate = useNavigate(); // Get the navigate function
 
   // Handlers for the existing Time Period dropdown
-  const timeOptions = ["1H", "4H", "12H", "24H", "7D", "30D", "All Time"];
+  const timeOptions = ["1H", "4H", "12H", "24H", "7D", "30D", "Custom"];
 
   const handleTimeSelect = (time) => {
     setSelectedTime(time);
     setIsTimeDropdownOpen(false);
-  };
-
-  // Handler to receive config data from the Popup
-  const handleApplyConfig = (config) => {
-    console.log("Config Applied from Popup:", config);
-    // You would typically use this config data here (e.g., update state, trigger actions)
-    if (config.timePeriod !== "Custom") {
-      setSelectedTime(config.timePeriod);
-    } else if (config.customDateRange) {
-      const formatDate = (date) => {
-        return date.toLocaleDateString("en-US", {
-          month: "short",
-          day: "numeric",
-          year: "numeric",
-        });
-      };
-      const startDate = formatDate(config.customDateRange.startDate);
-      const endDate = formatDate(config.customDateRange.endDate);
-      setSelectedTime(`${startDate} - ${endDate}`);
-    } else {
-      setSelectedTime("Custom Date");
-    }
   };
 
   return (
@@ -72,9 +49,9 @@ const Navbar = () => {
 
         {/* Right Side Actions */}
         <div className="flex items-center gap-2">
-          {/* Config Button - Toggles the config modal */}
+          {/* Config Button - Navigate to config route */}
           <button
-            onClick={() => setIsConfigOpen(true)} // Open the Popup
+            onClick={() => navigate("/traders/config")} // Navigate to the config route
             className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-gray-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-white transition-colors"
           >
             <SlidersHorizontal size={16} />
@@ -117,13 +94,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-      {/* Render the Popup component */}
-      <Popup
-        isOpen={isConfigOpen}
-        onClose={() => setIsConfigOpen(false)}
-        onApplyConfig={handleApplyConfig}
-      />
     </nav>
   );
 };

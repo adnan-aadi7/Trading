@@ -1125,10 +1125,10 @@ const HistoryTable = () => {
                   Closed
                 </th>
                 <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
-                  Sharpe
+                  Risk Ratio
                 </th>
                 <th className="text-left py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-400 font-medium whitespace-nowrap">
-                  Risk Ratio
+                  Sharpe
                 </th>
               </tr>
             </thead>
@@ -1207,6 +1207,9 @@ const HistoryTable = () => {
                     {trade.closedBalance}
                   </td>
                   <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
+                    {trade.riskRatio}
+                  </td>
+                  <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
                     <div className="flex items-center">
                       <div
                         className="w-20 h-2 bg-white mr-2"
@@ -1216,9 +1219,6 @@ const HistoryTable = () => {
                       ></div>
                       {trade.riskRatio}
                     </div>
-                  </td>
-                  <td className="py-2 sm:py-3 px-1 sm:px-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
-                    {trade.riskRatio}
                   </td>
                 </tr>
               ))}

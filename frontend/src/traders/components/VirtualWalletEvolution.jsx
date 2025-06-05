@@ -29,18 +29,20 @@ export default function VirtualWalletEvolution() {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="border border-gray-700/50 rounded-lg p-3 shadow-lg">
-          <p className="text-gray-300 text-sm mb-2">{label}</p>
+        <div className="bg-gray-800 border border-gray-700/50 rounded-lg p-2 sm:p-3 shadow-lg">
+          <p className="text-gray-300 text-xs sm:text-sm mb-1 sm:mb-2">
+            {label}
+          </p>
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <div className="w-3 h-1 bg-blue-500 rounded"></div>
-              <span className="text-white text-sm">
+              <div className="w-2 sm:w-3 h-1 bg-blue-500 rounded"></div>
+              <span className="text-white text-xs sm:text-sm">
                 Wallet: {payload[0].value}%
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-3 h-1 border border-dashed border-yellow-500 rounded"></div>
-              <span className="text-white text-sm">
+              <div className="w-2 sm:w-3 h-1 border border-dashed border-yellow-500 rounded"></div>
+              <span className="text-white text-xs sm:text-sm">
                 BTC: {payload[1].value}%
               </span>
             </div>
@@ -52,16 +54,16 @@ export default function VirtualWalletEvolution() {
   };
 
   return (
-    <div className="bg-gray-800 px-3 sm:px-6 lg:px-14 p-4 sm:p-6 rounded-lg w-full max-w-[1410px] mx-auto overflow-x-auto mt-4">
+    <div className="bg-gray-800 px-2 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 md:py-6 rounded-lg w-full max-w-[1405px] mx-auto overflow-x-auto mt-2 sm:mt-4">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6 sm:mb-8">
-        <h2 className="text-white text-xl sm:text-2xl font-semibold">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
+        <h2 className="text-white text-lg sm:text-xl md:text-2xl font-semibold">
           Virtual Wallet Evolution
         </h2>
         <div className="flex gap-2 w-full sm:w-auto">
           <button
             onClick={() => setViewMode("Absolute Value")}
-            className={`flex-1 sm:flex-none px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+            className={`flex-1 sm:flex-none px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
               viewMode === "Absolute Value"
                 ? "bg-blue-600 text-white"
                 : "bg-gray-700 text-gray-300 hover:bg-gray-600"
@@ -71,7 +73,7 @@ export default function VirtualWalletEvolution() {
           </button>
           <button
             onClick={() => setViewMode("% Change")}
-            className={`flex-1 sm:flex-none px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+            className={`flex-1 sm:flex-none px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
               viewMode === "% Change"
                 ? "bg-blue-600 text-white"
                 : "bg-gray-700 text-gray-300 hover:bg-gray-600"
@@ -83,29 +85,29 @@ export default function VirtualWalletEvolution() {
       </div>
 
       {/* Legend */}
-      <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mb-4 sm:mb-6">
-        <div className="flex items-center gap-2">
-          <div className="w-4 sm:w-6 h-1 bg-blue-500 rounded"></div>
+      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-6">
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="w-3 sm:w-4 md:w-6 h-1 bg-blue-500 rounded"></div>
           <span className="text-gray-300 text-xs sm:text-sm">
             Wallet Value %
           </span>
         </div>
-        <div className="flex items-center gap-2">
-          <div className="w-4 sm:w-6 h-1 border-2 border-dashed border-yellow-500 rounded"></div>
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="w-3 sm:w-4 md:w-6 h-1 border-2 border-dashed border-yellow-500 rounded"></div>
           <span className="text-gray-300 text-xs sm:text-sm">BTC/USD %</span>
         </div>
       </div>
 
       {/* Chart */}
-      <div className="h-60 sm:h-80 min-w-[300px]">
+      <div className="h-48 sm:h-60 md:h-72 lg:h-80 min-w-[280px] sm:min-w-[400px]">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
             margin={{
-              top: 10,
-              right: 20,
-              left: 10,
-              bottom: 10,
+              top: 5,
+              right: 10,
+              left: 5,
+              bottom: 5,
             }}
           >
             <CartesianGrid
@@ -120,6 +122,7 @@ export default function VirtualWalletEvolution() {
               tick={{ fill: "#9CA3AF", fontSize: 10 }}
               interval="preserveStartEnd"
               minTickGap={20}
+              height={30}
             />
             <YAxis
               domain={[0, 45]}
@@ -128,7 +131,7 @@ export default function VirtualWalletEvolution() {
               tickLine={false}
               tick={{ fill: "#9CA3AF", fontSize: 10 }}
               tickFormatter={(value) => `${value}%`}
-              width={35}
+              width={30}
             />
             <Tooltip content={<CustomTooltip />} />
             <Line
@@ -136,8 +139,8 @@ export default function VirtualWalletEvolution() {
               dataKey="walletValue"
               stroke="#3B82F6"
               strokeWidth={2}
-              dot={{ fill: "#3B82F6", strokeWidth: 0, r: 3 }}
-              activeDot={{ r: 5, fill: "#3B82F6" }}
+              dot={{ fill: "#3B82F6", strokeWidth: 0, r: 2 }}
+              activeDot={{ r: 4, fill: "#3B82F6" }}
             />
             <Line
               type="monotone"
@@ -145,8 +148,8 @@ export default function VirtualWalletEvolution() {
               stroke="#EAB308"
               strokeWidth={2}
               strokeDasharray="8 4"
-              dot={{ fill: "#EAB308", strokeWidth: 0, r: 3 }}
-              activeDot={{ r: 5, fill: "#EAB308" }}
+              dot={{ fill: "#EAB308", strokeWidth: 0, r: 2 }}
+              activeDot={{ r: 4, fill: "#EAB308" }}
             />
           </LineChart>
         </ResponsiveContainer>
