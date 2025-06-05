@@ -33,6 +33,16 @@ const Config = () => {
 
   const timeOptions = ["1H", "4H", "12H", "24H", "7D", "30D", "Custom"];
 
+  // Add custom styles for select elements
+  const selectStyles = {
+    paddingRight: "1.5rem",
+    appearance: "none",
+    backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "right 0.3rem center",
+    backgroundSize: "1em 1em",
+  };
+
   const handlePeriodSelect = (period) => {
     if (period === "Custom") {
       setSelectedPeriod("Custom");
@@ -95,6 +105,7 @@ const Config = () => {
             <select
               value={quantityType}
               onChange={(e) => setQuantityType(e.target.value)}
+              style={selectStyles}
               className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
             >
               <option value="$">$ (USD)</option>
@@ -110,6 +121,7 @@ const Config = () => {
             <select
               value={marginMode}
               onChange={(e) => setMarginMode(e.target.value)}
+              style={selectStyles}
               className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
             >
               <option value="CROSSED">Crossed</option>
@@ -126,7 +138,7 @@ const Config = () => {
               type="number"
               value={maxLeverage}
               onChange={(e) => setMaxLeverage(e.target.value)}
-              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 pr-8 focus:ring-2 focus:ring-blue-500"
               placeholder="10"
             />
           </div>
@@ -140,7 +152,7 @@ const Config = () => {
               type="number"
               value={maxIncreasePercentage}
               onChange={(e) => setMaxIncreasePercentage(e.target.value)}
-              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 pr-8 focus:ring-2 focus:ring-blue-500"
               placeholder="100"
             />
           </div>
@@ -154,7 +166,7 @@ const Config = () => {
               type="number"
               value={stopLoss}
               onChange={(e) => setStopLoss(e.target.value)}
-              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 pr-8 focus:ring-2 focus:ring-blue-500"
               placeholder="5"
             />
           </div>
@@ -168,7 +180,7 @@ const Config = () => {
               type="number"
               value={takeProfit}
               onChange={(e) => setTakeProfit(e.target.value)}
-              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 pr-8 focus:ring-2 focus:ring-blue-500"
               placeholder="10"
             />
           </div>
@@ -181,6 +193,7 @@ const Config = () => {
             <select
               value={increaseType}
               onChange={(e) => setIncreaseType(e.target.value)}
+              style={selectStyles}
               className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
             >
               <option value="%">% (Percentage)</option>
@@ -196,6 +209,7 @@ const Config = () => {
             <select
               value={decreaseType}
               onChange={(e) => setDecreaseType(e.target.value)}
+              style={selectStyles}
               className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
             >
               <option value="%">% (Percentage)</option>
@@ -211,6 +225,7 @@ const Config = () => {
             <select
               value={increaseSource}
               onChange={(e) => setIncreaseSource(e.target.value)}
+              style={selectStyles}
               className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
             >
               <option value="POSITION">Position</option>
@@ -226,6 +241,7 @@ const Config = () => {
             <select
               value={decreaseSource}
               onChange={(e) => setDecreaseSource(e.target.value)}
+              style={selectStyles}
               className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
             >
               <option value="POSITION">Position</option>
@@ -242,7 +258,7 @@ const Config = () => {
               type="number"
               value={increaseQuantity}
               onChange={(e) => setIncreaseQuantity(e.target.value)}
-              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 pr-8 focus:ring-2 focus:ring-blue-500"
               placeholder="0"
             />
           </div>
@@ -256,7 +272,7 @@ const Config = () => {
               type="number"
               value={decreaseQuantity}
               onChange={(e) => setDecreaseQuantity(e.target.value)}
-              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 pr-8 focus:ring-2 focus:ring-blue-500"
               placeholder="0"
             />
           </div>
@@ -270,7 +286,7 @@ const Config = () => {
               type="number"
               value={openQuantity}
               onChange={(e) => setOpenQuantity(e.target.value)}
-              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 pr-8 focus:ring-2 focus:ring-blue-500"
               placeholder="0"
             />
           </div>
@@ -284,7 +300,7 @@ const Config = () => {
               type="text"
               value={removeCrypto}
               onChange={(e) => setRemoveCrypto(e.target.value)}
-              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-gray-800 text-white text-base font-semibold outline-none border border-slate-600 rounded-md px-3 py-2 pr-8 focus:ring-2 focus:ring-blue-500"
               placeholder="Enter tags/keywords to exclude (comma-separated)"
             />
           </div>
