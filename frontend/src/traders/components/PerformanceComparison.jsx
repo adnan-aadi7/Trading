@@ -99,202 +99,205 @@ function PerformanceComparison() {
   };
 
   return (
-    <div className=" bg-gray-800 p-4 sm:p-6 rounded-lg w-full max-w-[1410px] mx-auto overflow-x-auto">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6 sm:mb-8">
-        <h2 className="text-white text-xl sm:text-2xl font-semibold">
-          Performance Comparison
-        </h2>
-        <div className="flex flex-wrap gap-2 w-full sm:w-auto">
-          {timeframes.map((timeframe) => (
-            <button
-              key={timeframe}
-              onClick={() => setSelectedTimeframe(timeframe)}
-              className={`flex-1 sm:flex-none px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
-                selectedTimeframe === timeframe
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-700 text-gray-300 hover:bg-gray-600"
-              }`}
-            >
-              {timeframe}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Charts Container */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
-        {/* Left Chart - Individual PNL vs Global Avg */}
-        <div className="min-w-[300px]">
-          <h3 className="text-white text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
-            Individual PNL vs Global PNL Avg
-          </h3>
-
-          {/* Legend */}
-          <div className="flex flex-wrap items-center gap-3 sm:gap-6 mb-3 sm:mb-4">
-            <div className="flex items-center gap-2">
-              <div className="w-3 sm:w-4 h-1 bg-green-500 rounded"></div>
-              <span className="text-gray-300 text-xs sm:text-sm">
-                Trader PNL
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 sm:w-4 h-1 border-2 border-dashed border-blue-500 rounded"></div>
-              <span className="text-gray-300 text-xs sm:text-sm">
-                Global PNL Avg
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 sm:w-4 h-1 border-2 border-dotted border-yellow-500 rounded"></div>
-              <span className="text-gray-300 text-xs sm:text-sm">
-                BTC Fluctuation
-              </span>
-            </div>
-          </div>
-
-          {/* Chart */}
-          <div className="h-60 sm:h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart
-                data={individualPNLData}
-                margin={{ top: 10, right: 20, left: 10, bottom: 10 }}
+    <div className="sm:px-14 md:px-2 lg:px-10 sm:py-3 md:py-4 w-full max-w-full mx-auto overflow-x-auto mt-2">
+      <div className="py-3 bg-gray-800 rounded-2xl px-4 mx-4">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-2 mb-2 sm:mb-4">
+          <h2 className="text-white text-base sm:text-lg md:text-xl font-semibold">
+            Performance Comparison
+          </h2>
+          <div className="flex flex-wrap gap-2 w-full sm:w-auto">
+            {timeframes.map((timeframe) => (
+              <button
+                key={timeframe}
+                onClick={() => setSelectedTimeframe(timeframe)}
+                className={`flex-1 sm:flex-none px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+                  selectedTimeframe === timeframe
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                }`}
               >
-                <CartesianGrid
-                  strokeDasharray="3 3"
-                  stroke="#374151"
-                  opacity={0.3}
-                />
-                <XAxis
-                  dataKey="time"
-                  axisLine={false}
-                  tickLine={false}
-                  tick={{ fill: "#9CA3AF", fontSize: 10 }}
-                  interval="preserveStartEnd"
-                  minTickGap={20}
-                />
-                <YAxis
-                  domain={[0, 4.5]}
-                  axisLine={false}
-                  tickLine={false}
-                  tick={{ fill: "#9CA3AF", fontSize: 10 }}
-                  tickFormatter={(value) => `${value}%`}
-                  width={35}
-                />
-                <Tooltip content={<CustomTooltip />} />
-                <Line
-                  type="monotone"
-                  dataKey="traderPNL"
-                  stroke="#10B981"
-                  strokeWidth={2}
-                  dot={{ fill: "#10B981", strokeWidth: 0, r: 3 }}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="globalAvgPNL"
-                  stroke="#3B82F6"
-                  strokeWidth={2}
-                  strokeDasharray="8 4"
-                  dot={{ fill: "#3B82F6", strokeWidth: 0, r: 3 }}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="btcFluctuation"
-                  stroke="#EAB308"
-                  strokeWidth={2}
-                  strokeDasharray="2 2"
-                  dot={{ fill: "#EAB308", strokeWidth: 0, r: 3 }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+                {timeframe}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Right Chart - Config PNL vs Global Avg */}
-        <div className="min-w-[300px]">
-          <h3 className="text-white text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
-            Config PNL vs Global Config PNL
-          </h3>
+        {/* Charts Container */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
+          {/* Left Chart - Individual PNL vs Global Avg */}
+          <div className="min-w-[300px]">
+            <h3 className="text-white text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4">
+              Individual PNL vs Global PNL Avg
+            </h3>
 
-          {/* Legend */}
-          <div className="flex flex-wrap items-center gap-3 sm:gap-6 mb-3 sm:mb-4">
-            <div className="flex items-center gap-2">
-              <div className="w-3 sm:w-4 h-1 bg-green-500 rounded"></div>
-              <span className="text-gray-300 text-xs sm:text-sm">
-                Trader Config PNL
-              </span>
+            {/* Legend */}
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3 md:mb-4">
+              <div className="flex items-center gap-1 sm:gap-1.5">
+                <div className="w-2 sm:w-3 h-1 bg-green-500 rounded"></div>
+                <span className="text-gray-300 text-xs sm:text-sm">
+                  Trader PNL
+                </span>
+              </div>
+              <div className="flex items-center gap-1 sm:gap-1.5">
+                <div className="w-2 sm:w-3 h-1 border-2 border-dashed border-blue-500 rounded"></div>
+                <span className="text-gray-300 text-xs sm:text-sm">
+                  Global PNL Avg
+                </span>
+              </div>
+              <div className="flex items-center gap-1 sm:gap-1.5">
+                <div className="w-2 sm:w-3 h-1 border-2 border-dotted border-yellow-500 rounded"></div>
+                <span className="text-gray-300 text-xs sm:text-sm">
+                  BTC Fluctuation
+                </span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 sm:w-4 h-1 border-2 border-dashed border-blue-500 rounded"></div>
-              <span className="text-gray-300 text-xs sm:text-sm">
-                Global Config PNL
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 sm:w-4 h-1 border-2 border-dotted border-yellow-500 rounded"></div>
-              <span className="text-gray-300 text-xs sm:text-sm">
-                BTC Fluctuation
-              </span>
+
+            {/* Chart */}
+            <div className="h-40 sm:h-48 md:h-60 lg:h-72 min-w-[280px] sm:min-w-[400px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                  data={individualPNLData}
+                  margin={{ top: 10, right: 20, left: 10, bottom: 10 }}
+                >
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="#374151"
+                    opacity={0.3}
+                  />
+                  <XAxis
+                    dataKey="time"
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fill: "#9CA3AF", fontSize: 10 }}
+                    interval="preserveStartEnd"
+                    minTickGap={20}
+                  />
+                  <YAxis
+                    domain={[0, 4.5]}
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fill: "#9CA3AF", fontSize: 10 }}
+                    tickFormatter={(value) => `${value}%`}
+                    width={35}
+                  />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Line
+                    type="monotone"
+                    dataKey="traderPNL"
+                    stroke="#10B981"
+                    strokeWidth={2}
+                    dot={{ fill: "#10B981", strokeWidth: 0, r: 3 }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="globalAvgPNL"
+                    stroke="#3B82F6"
+                    strokeWidth={2}
+                    strokeDasharray="8 4"
+                    dot={{ fill: "#3B82F6", strokeWidth: 0, r: 3 }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="btcFluctuation"
+                    stroke="#EAB308"
+                    strokeWidth={2}
+                    strokeDasharray="2 2"
+                    dot={{ fill: "#EAB308", strokeWidth: 0, r: 3 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
           </div>
 
-          {/* Chart */}
-          <div className="h-60 sm:h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart
-                data={configPNLData}
-                margin={{ top: 10, right: 20, left: 10, bottom: 10 }}
-              >
-                <CartesianGrid
-                  strokeDasharray="3 3"
-                  stroke="#374151"
-                  opacity={0.3}
-                />
-                <XAxis
-                  dataKey="time"
-                  axisLine={false}
-                  tickLine={false}
-                  tick={{ fill: "#9CA3AF", fontSize: 10 }}
-                  interval="preserveStartEnd"
-                  minTickGap={20}
-                />
-                <YAxis
-                  domain={[0, 100]}
-                  axisLine={false}
-                  tickLine={false}
-                  tick={{ fill: "#9CA3AF", fontSize: 10 }}
-                  tickFormatter={(value) => `$${value}`}
-                  width={35}
-                />
-                <Tooltip content={<CustomTooltip />} />
-                <Line
-                  type="monotone"
-                  dataKey="traderConfigPNL"
-                  stroke="#10B981"
-                  strokeWidth={2}
-                  dot={{ fill: "#10B981", strokeWidth: 0, r: 3 }}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="globalConfigPNL"
-                  stroke="#3B82F6"
-                  strokeWidth={2}
-                  strokeDasharray="8 4"
-                  dot={{ fill: "#3B82F6", strokeWidth: 0, r: 3 }}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="btcFluctuation"
-                  stroke="#EAB308"
-                  strokeWidth={2}
-                  strokeDasharray="2 2"
-                  dot={{ fill: "#EAB308", strokeWidth: 0, r: 3 }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+          {/* Right Chart - Config PNL vs Global Avg */}
+          <div className="min-w-[300px]">
+            <h3 className="text-white text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
+              Config PNL vs Global Config PNL
+            </h3>
+
+            {/* Legend */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-6 mb-3 sm:mb-4">
+              <div className="flex items-center gap-2">
+                <div className="w-3 sm:w-4 h-1 bg-green-500 rounded"></div>
+                <span className="text-gray-300 text-xs sm:text-sm">
+                  Trader Config PNL
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 sm:w-4 h-1 border-2 border-dashed border-blue-500 rounded"></div>
+                <span className="text-gray-300 text-xs sm:text-sm">
+                  Global Config PNL
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 sm:w-4 h-1 border-2 border-dotted border-yellow-500 rounded"></div>
+                <span className="text-gray-300 text-xs sm:text-sm">
+                  BTC Fluctuation
+                </span>
+              </div>
+            </div>
+
+            {/* Chart */}
+            <div className="h-40 sm:h-48 md:h-60 lg:h-72 min-w-[280px] sm:min-w-[400px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                  data={configPNLData}
+                  margin={{ top: 10, right: 20, left: 10, bottom: 10 }}
+                >
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="#374151"
+                    opacity={0.3}
+                  />
+                  <XAxis
+                    dataKey="time"
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fill: "#9CA3AF", fontSize: 10 }}
+                    interval="preserveStartEnd"
+                    minTickGap={20}
+                  />
+                  <YAxis
+                    domain={[0, 100]}
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fill: "#9CA3AF", fontSize: 10 }}
+                    tickFormatter={(value) => `$${value}`}
+                    width={35}
+                  />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Line
+                    type="monotone"
+                    dataKey="traderConfigPNL"
+                    stroke="#10B981"
+                    strokeWidth={2}
+                    dot={{ fill: "#10B981", strokeWidth: 0, r: 3 }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="globalConfigPNL"
+                    stroke="#3B82F6"
+                    strokeWidth={2}
+                    strokeDasharray="8 4"
+                    dot={{ fill: "#3B82F6", strokeWidth: 0, r: 3 }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="btcFluctuation"
+                    stroke="#EAB308"
+                    strokeWidth={2}
+                    strokeDasharray="2 2"
+                    dot={{ fill: "#EAB308", strokeWidth: 0, r: 3 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 }
+
 export default PerformanceComparison;
