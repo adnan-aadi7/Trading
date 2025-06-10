@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import { X } from "lucide-react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Config = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Get the source page from the location state
+  const sourcePage = location.state?.from || "/traders";
+
   // State for config inputs
   const [quantityType, setQuantityType] = useState("$");
   const [marginMode, setMarginMode] = useState("CROSSED");
@@ -28,8 +34,6 @@ const Config = () => {
   const [isCustomDateOpen, setIsCustomDateOpen] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
-  const navigate = useNavigate();
 
   const timeOptions = ["1H", "4H", "12H", "24H", "7D", "30D", "Custom"];
 
@@ -76,7 +80,7 @@ const Config = () => {
       openQuantity,
     };
     console.log("Config Applied:", config);
-    navigate("/traders");
+    navigate(sourcePage);
   };
 
   return (
@@ -88,7 +92,7 @@ const Config = () => {
             Trading Configuration
           </h2>
           <button
-            onClick={() => navigate("/traders")}
+            onClick={() => navigate(sourcePage)}
             className="text-gray-400 hover:text-white"
           >
             <X size={20} />
@@ -362,13 +366,13 @@ const Config = () => {
         {/* Footer */}
         <div className="flex justify-end gap-3 mt-3">
           <button
-            onClick={() => navigate("/traders")}
+            onClick={() => navigate(sourcePage)}
             className="px-4 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition-colors"
           >
             Cancel
           </button>
           <button
-            onClick={() => navigate("/traders")}
+            onClick={() => navigate(sourcePage)}
             className="px-4 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition-colors"
           >
             Return

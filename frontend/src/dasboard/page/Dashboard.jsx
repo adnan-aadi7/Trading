@@ -7,14 +7,14 @@ import PopularActivePairs from "../components/PopularActivePairs";
 import LiveFeed from "../components/LiveFeed";
 import StreakTraders from "../components/Streaktraders";
 import Leaderboard from "../components/LeaderBoard";
-import NavbarUpdated from "../../common/NavbarUpdated";
 import Footer from "../../common/Footer";
 import BtcIndex from "../components/BtcIndex";
+import Navbar from "../../common/Navbar";
 
 const Dashboard = () => {
   return (
     <>
-      <NavbarUpdated />
+      <Navbar />
 
       <div className="w-full px-3 sm:px-4 md:px-6 ">
         <TradingMetricsCards />

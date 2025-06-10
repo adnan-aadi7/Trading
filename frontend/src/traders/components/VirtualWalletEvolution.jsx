@@ -54,16 +54,16 @@ export default function VirtualWalletEvolution() {
   };
 
   return (
-    <div className="bg-gray-800 px-2 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 md:py-6 rounded-lg w-full max-w-[1405px] mx-auto overflow-x-auto mt-2 sm:mt-4">
+    <div className="bg-gray-800 px-6 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4 rounded-lg w-full max-w-[1405px] mx-auto overflow-x-auto mt-2">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
-        <h2 className="text-white text-lg sm:text-xl md:text-2xl font-semibold">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-2 mb-2 sm:mb-4">
+        <h2 className="text-white text-base sm:text-lg md:text-xl font-semibold">
           Virtual Wallet Evolution
         </h2>
-        <div className="flex gap-2 w-full sm:w-auto">
+        <div className="flex gap-1 sm:gap-2 w-full sm:w-auto">
           <button
             onClick={() => setViewMode("Absolute Value")}
-            className={`flex-1 sm:flex-none px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+            className={`flex-1 sm:flex-none px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
               viewMode === "Absolute Value"
                 ? "bg-blue-600 text-white"
                 : "bg-gray-700 text-gray-300 hover:bg-gray-600"
@@ -73,7 +73,7 @@ export default function VirtualWalletEvolution() {
           </button>
           <button
             onClick={() => setViewMode("% Change")}
-            className={`flex-1 sm:flex-none px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+            className={`flex-1 sm:flex-none px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
               viewMode === "% Change"
                 ? "bg-blue-600 text-white"
                 : "bg-gray-700 text-gray-300 hover:bg-gray-600"
@@ -85,21 +85,21 @@ export default function VirtualWalletEvolution() {
       </div>
 
       {/* Legend */}
-      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-6">
-        <div className="flex items-center gap-1.5 sm:gap-2">
-          <div className="w-3 sm:w-4 md:w-6 h-1 bg-blue-500 rounded"></div>
+      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3 md:mb-4">
+        <div className="flex items-center gap-1 sm:gap-1.5">
+          <div className="w-2 sm:w-3 h-1 bg-blue-500 rounded"></div>
           <span className="text-gray-300 text-xs sm:text-sm">
             Wallet Value %
           </span>
         </div>
-        <div className="flex items-center gap-1.5 sm:gap-2">
-          <div className="w-3 sm:w-4 md:w-6 h-1 border-2 border-dashed border-yellow-500 rounded"></div>
+        <div className="flex items-center gap-1 sm:gap-1.5">
+          <div className="w-2 sm:w-3 h-1 border-2 border-dashed border-yellow-500 rounded"></div>
           <span className="text-gray-300 text-xs sm:text-sm">BTC/USD %</span>
         </div>
       </div>
 
       {/* Chart */}
-      <div className="h-48 sm:h-60 md:h-72 lg:h-80 min-w-[280px] sm:min-w-[400px]">
+      <div className="h-40 sm:h-48 md:h-60 lg:h-72 min-w-[280px] sm:min-w-[400px]">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}

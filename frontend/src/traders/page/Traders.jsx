@@ -9,7 +9,7 @@ import PerformanceComparison from "../components/PerformanceComparison";
 import WalletComparisonChart from "../components/WalletComparisonChart";
 import TradeHistoryTable from "../components/TradeHistoryTable";
 import Footer from "../../common/Footer";
-import Navbar from "../components/Navbar";
+import Navbar from "../../common/Navbar";
 
 const Traders = () => {
   return (

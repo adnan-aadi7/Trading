@@ -1,154 +1,208 @@
 import React, { useState } from "react";
 import {
   Search,
-  Plus,
-  Bell,
-  Settings,
+  SlidersHorizontal,
+  Clock,
   ChevronDown,
-  Menu,
-  X,
+  Calendar,
 } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/images/updatedlogo.svg"; // Adjust the path as necessary
+import { useNavigate, useLocation } from "react-router-dom"; // Import useNavigate and useLocation
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Navbar = () => {
-  const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [isTimeDropdownOpen, setIsTimeDropdownOpen] = useState(false);
+  const [selectedTime, setSelectedTime] = useState("24H");
+  const [isCustomDateOpen, setIsCustomDateOpen] = useState(false);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
-  const navLinks = [
-    // { name: "Dashboard", path: "/" },
-    // { name: "Traders", path: "/traders" },
-    // { name: "Trades", path: "/trade" },
-    // { name: "Analytics", path: "/analytics" },
-    // { name: "Leaderboard", path: "/leaderboard" },
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Handlers for the existing Time Period dropdown
+  const timeOptions = [
+    "1H",
+    "4H",
+    "12H",
+    "24H",
+    "7D",
+    "30D",
+    "All Time",
+    "Custom",
   ];
 
+  const handleTimeSelect = (time) => {
+    if (time === "Custom") {
+      setIsCustomDateOpen(true);
+      setIsTimeDropdownOpen(false); // Close the time dropdown
+    } else {
+      setSelectedTime(time);
+      setIsTimeDropdownOpen(false);
+      setIsCustomDateOpen(false); // Close custom date if a standard option is selected
+    }
+  };
+
+  const handleCustomDateSelect = () => {
+    const formatDate = (date) => {
+      return date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+    };
+    setSelectedTime(`${formatDate(startDate)} - ${formatDate(endDate)}`);
+    setIsCustomDateOpen(false);
+    setIsTimeDropdownOpen(false);
+  };
+
   return (
-    <nav className=" lg:px-12 py-3 bg-gray-800">
-      <div className="flex items-center justify-between">
-        {/* Left side */}
-        <div className="flex items-center space-x-4">
-          {/* Logo */}
-          <div className="bg-blue-600 w-8 h-8 rounded flex items-center justify-center">
-            <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[8px] border-b-white"></div>
-          </div>
+    <nav className="sticky top-0 z-50  bg-gray-800 border-b border-slate-700 px-4 sm:px-14 md:px-6 lg:px-13 py-5 ">
+      <div className="flex items-center justify-between gap-2">
+        {/* Logo */}
+        <div className="flex items-center gap-1 sm:gap-2">
+          <img
+            src={logo}
+            alt="CopyTradeX Logo"
+            className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12"
+          />
+        </div>
 
-          {/* Navigation Links (desktop only) */}
-          <div className="hidden md:flex items-center space-x-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`pb-1 ${
-                  location.pathname === link.path
-                    ? "text-white border-b-2 border-white"
-                    : "text-gray-300 hover:text-white"
-                } transition-colors`}
-              >
-                {link.name}
-              </Link>
-            ))}
-
-            {/* <div className="flex items-center text-gray-300 hover:text-white transition-colors cursor-pointer">
-              <span>More</span>
-              <ChevronDown className="w-4 h-4 ml-1" />
-            </div> */}
+        {/* Search Bar - Always visible */}
+        <div className="flex-1 mx-2 sm:mx-4 md:mx-8 max-w-[200px] sm:max-w-[300px] md:max-w-[400px] lg:max-w-[500px]  from-gray-900 via-gray-800 to-indigo-900">
+          <div className="relative w-full">
+            <Search
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400"
+              size={16}
+            />
+            <input
+              type="text"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              placeholder="Search for traders..."
+              className="w-full bg-gray-800 border border-slate-600 rounded-lg pl-8 sm:pl-10 pr-2 sm:pr-3 py-1.5 sm:py-2 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
           </div>
         </div>
 
-        {/* Right side */}
-        <div className="flex items-center space-x-4">
-          {/* Search (visible on all screens) */}
-          <div className="relative">
-            <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
-            <input
-              type="text"
-              placeholder="Search by Trade ID or Trader name"
-              className="bg-slate-700 text-white placeholder-gray-400 pl-10 pr-4 py-2 rounded-lg w-[200px] sm:w-80 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          {/* Hamburger menu (mobile) */}
+        {/* Right Side Actions */}
+        <div className="flex items-center gap-2">
+          {/* Config Button - Navigate to config route */}
           <button
-            className="md:hidden text-gray-300"
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() =>
+              navigate("/config", { state: { from: location.pathname } })
+            }
+            className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-gray-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-white transition-colors"
           >
-            {menuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
+            <SlidersHorizontal size={16} />
+            <span className="text-xs sm:text-sm font-medium">Config</span>
           </button>
 
-          {/* Desktop only items */}
-          <div className="hidden md:flex items-center space-x-4">
-            {/* New Alert Button */}
-            {/* <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors">
-              <Plus className="w-4 h-4" />
-              <span>New Alert</span>
-            </button> */}
-
-            {/* Icons */}
-            <button className="text-gray-300 hover:text-white transition-colors">
-              <Bell className="w-5 h-5" />
-            </button>
-            <button className="text-gray-300 hover:text-white transition-colors">
-              <Settings className="w-5 h-5" />
-            </button>
-
-            {/* Profile */}
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-purple-600 flex items-center justify-center">
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E"
-                alt="Profile"
-                className="w-5 h-5"
+          {/* Time Period Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setIsTimeDropdownOpen(!isTimeDropdownOpen)}
+              className="flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-gray-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-white transition-colors"
+            >
+              <Clock size={16} />
+              <span className="text-xs sm:text-sm font-medium">
+                {selectedTime}
+              </span>
+              <ChevronDown
+                size={14}
+                className={`transition-transform ${
+                  isTimeDropdownOpen ? "rotate-180" : ""
+                }`}
               />
-            </div>
+            </button>
+
+            {isTimeDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-22 bg-gray-800 border border-slate-600 rounded-lg shadow-lg z-50">
+                {timeOptions.map((time) => (
+                  <button
+                    key={time}
+                    onClick={() => handleTimeSelect(time)}
+                    className={`w-full px-3 py-2 text-left text-xs sm:text-sm hover:bg-slate-700 transition-colors ${
+                      selectedTime === time ? "text-blue-400" : "text-white"
+                    }`}
+                  >
+                    {time}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {isCustomDateOpen && (
+              <div className="absolute right-0 mt-2 p-4 bg-gray-800 border border-slate-600 rounded-lg shadow-lg z-50 w-[300px]">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-medium text-white">
+                      Select Date Range
+                    </h3>
+                    <button
+                      onClick={() => setIsCustomDateOpen(false)}
+                      className="text-gray-400 hover:text-white"
+                    >
+                      ×
+                    </button>
+                  </div>
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block text-xs text-gray-400 mb-1">
+                        From
+                      </label>
+                      <DatePicker
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
+                        selectsStart
+                        startDate={startDate}
+                        endDate={endDate}
+                        className="w-full bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        dateFormat="MMM d, yyyy"
+                        calendarClassName="bg-gray-800 border border-slate-600"
+                        popperClassName="react-datepicker-popper"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-gray-400 mb-1">
+                        To
+                      </label>
+                      <DatePicker
+                        selected={endDate}
+                        onChange={(date) => setEndDate(date)}
+                        selectsEnd
+                        startDate={startDate}
+                        endDate={endDate}
+                        minDate={startDate}
+                        className="w-full bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        dateFormat="MMM d, yyyy"
+                        calendarClassName="bg-gray-800 border border-slate-600"
+                        popperClassName="react-datepicker-popper"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setIsCustomDateOpen(false)}
+                      className="flex-1 px-3 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded text-sm transition-colors"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={handleCustomDateSelect}
+                      className="flex-1 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm transition-colors"
+                    >
+                      Apply
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden mt-4 space-y-2">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              onClick={() => setMenuOpen(false)}
-              className={`block px-2 py-2 rounded ${
-                location.pathname === link.path
-                  ? "text-white bg-slate-700"
-                  : "text-gray-300 hover:bg-slate-700 hover:text-white"
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-
-          {/* New Alert Button */}
-          <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center justify-center gap-2 mt-2 transition-colors">
-            <Plus className="w-4 h-4" />
-            <span>New Alert</span>
-          </button>
-
-          {/* Icons */}
-          <div className="flex justify-between mt-4 px-2">
-            <button className="text-gray-300 hover:text-white">
-              <Bell className="w-5 h-5" />
-            </button>
-            <button className="text-gray-300 hover:text-white">
-              <Settings className="w-5 h-5" />
-            </button>
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-purple-600 flex items-center justify-center">
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E"
-                alt="Profile"
-                className="w-5 h-5"
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
